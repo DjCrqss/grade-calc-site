@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CoursesService } from '../courses.service';
-import { SchoolYear } from '../classes';
+
 
 @Component({
   selector: 'app-years-list',
@@ -18,5 +18,9 @@ export class YearsListComponent{
 
   addNewYear(){
     this.cs.addYear();
+  }
+
+  deleteYear(id:number){
+    this.cs.deleteYear(id);
   }
 }

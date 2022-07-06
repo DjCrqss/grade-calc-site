@@ -1,6 +1,16 @@
-<div class="year_card" *ngFor="let item of items">
-    <h2>{{item.id}}</h2>
-</div>
+<table class="year_card" *ngFor="let item of items">
+    <tr>
+       <td><h2>{{item.id}}</h2></td>
+       <td>
+            <div class="menu" (click)="deleteYear(item.id)">
+                <!-- <i class="material-icons">shopping_cart</i> -->
+                
+                <span class="material-icons">&#xe5d3;</span>
+            </div>
+       </td>
+    </tr>
+</table>
 
 <div id="fab_btn" (click)="addNewYear()">+</div>
+
 
