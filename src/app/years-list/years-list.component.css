@@ -1,0 +1,32 @@
+.year_card{
+    background-color: var(--col-two);
+    font-family: 'Gantari', sans-serif;
+    
+    margin-bottom: 1em;
+    padding: 1em;
+
+    border-radius: 1em;
+}
+
+h2{
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#fab_btn{
+    background-color: #8CC6C6;
+    box-shadow: 1px 6px 12px 2px #61b5aa88;
+
+    font-family: 'Gantari', sans-serif;
+    font-size: 2em;
+    color: #FFF;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    border-radius: 1em;
+    user-select: none;
+
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}

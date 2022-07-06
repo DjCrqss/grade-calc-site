@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    font-size: 16px;
+    background-color: var(--col-one);
+    color: var(--text-col);
+}
+
+
+:root{
+	--text-col: #333;   /* Use transparency for lighter versions */
+	--col-one: #FFFFFF;
+    --col-two: #F0F0F0;
+    --col-three: #D9D9D9; 
+    --col-four: #AEAEAE;
+
+    --bar-col: #677B69;
+    --pred-bar-col: #987A59;
+    /* use colour 4 for the unset ones */
+}
+
