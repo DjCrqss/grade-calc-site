@@ -11,13 +11,20 @@ export class CoursesService{
 
     // temporary
     constructor(){
-        this.years.push(new SchoolYear(2020));
-        this.years.push(new SchoolYear(2021));
+        if(localStorage.getItem("yearsList") === null){
+            this.years.push(new SchoolYear(2020));
+            this.years.push(new SchoolYear(2021));
+        } else {
+            this.years = JSON.parse(localStorage.getItem("yearsList") || '{}');
+        }
+        
     }
 
     addYear(){
-        this.years.push(new SchoolYear(2022));
+        this.years.push(new SchoolYear(Math.floor(1000 + Math.random() * 1021)));
         console.log("Added new item");
+
+        this.saveToStorage();
     }
 
     deleteYear(id:number){
@@ -31,11 +38,24 @@ export class CoursesService{
         this.years.reverse();
 
         console.log('Deleted item');
+        this.saveToStorage();
 
     }
+
     getYears(){ return this.years; }
 
 
+
+    // public get CoursesService(): CoursesService{
+    //     return JSON.parse(localStorage.getItem('rootNode'));
+    // }
+    // public set CoursesService(value: CoursesService){
+    //     localStorage.setItem('rootNode', JSON.stringify(this.years))
+    // }
+
+    saveToStorage(){
+        localStorage.setItem('yearsList', JSON.stringify(this.years));
+    }
 
 }
 

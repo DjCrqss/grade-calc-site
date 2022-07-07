@@ -11,6 +11,10 @@
     position: relative;
 }
 
+.deletable_card{
+    /* animation: wiggle 0.25s infinite alternate ease-in-out; */
+}
+
 h2{
     font-size: 1.5em;
     margin: 0;
@@ -54,4 +58,16 @@ td{
     position: absolute;
     top: -0.5em;
     right: -0.5em;
+
+    cursor: pointer;
+
+}
+
+@keyframes wiggle {
+    from{
+        transform: translateX(-3px);
+    }
+    frotom{
+        transform: translateX(3px);
+    }
 }
