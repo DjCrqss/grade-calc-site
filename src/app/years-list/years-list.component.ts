@@ -13,7 +13,7 @@ export class YearsListComponent{
   // Retrieve values
   items = this.cs.getYears();
   
-  
+  // constructor for original object
   constructor(private route: ActivatedRoute, private cs: CoursesService) {
     // console.log("Root contents: " + this.items);
   }

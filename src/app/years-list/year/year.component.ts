@@ -2,6 +2,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SchoolYear, SchoolTerm } from '../../courses.service';
 
+
+
 @Component({
   selector: 'app-year',
   templateUrl: './year.component.html',
@@ -33,15 +35,13 @@ export class YearComponent {
     this.requestSave.emit("Term added");
   }
   
-  editYear(){
-
-    this.yearObj.editYear(2022);
-    this.requestSave.emit("Edited year");
+  editYear(id:string){
+    // remove newlines
+    id.replace(/\r?\n|\r/g, "");
+    // check length then edit year if good
+    if(id.length > 0){
+      this.yearObj.editYear(id);
+      this.requestSave.emit("Edited year");
+    }
   }
-
-  // Menu
-  toggleMenu(){
-    
-  }
-
 }

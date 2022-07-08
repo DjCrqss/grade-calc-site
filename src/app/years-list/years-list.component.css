@@ -47,6 +47,7 @@ td{
     font-size: 1em;
     padding: 0.25em;
     background-color: #ed6464;
+    color: #ffc2c2;
     width: 1em;
     height: 1em;
     border-radius: 1em;
@@ -69,24 +70,25 @@ td{
 }
 
 .title_container{
-    display: inline-block;
+    display: block;
     cursor: pointer;
-
 }
 .edit_btn{
     visibility: hidden;
+    opacity: 0.25;
 }
 .title_container:hover .edit_btn{
     visibility: visible;
 }
 
 .add_btn{
-    display: block;
+    display: table;
     cursor: pointer;
     background-color: #8CC6C6;
-    width: 1em;
-    border-radius: 1em;
-    padding: 0.35em;
+    color: #deffff;
+    
+    border-radius: 5em;
+    padding: 0.7em;
 }
 
 
@@ -95,14 +97,26 @@ h2{ /* Years */
     font-size: 2em;
     margin: 0 0.2em 0.5em 0;
     display: inline-block;
+    max-width: 60vw;
+    word-wrap: break-word;
 }
 
 h3{ /* Terms/Semesters */
     font-size: 2em;
     margin: 0 0 0.5em 0;
+    display: inline-block;
+    max-width: 60vw;
+    word-wrap: break-word;
 }
 
 h4{ /* Courses */
     font-size: 2em;
     margin: 0 0 0.5em 0;
+    display: inline-block;
+    max-width: 60vw;
+    word-wrap: break-word;
 }
+
+[contenteditable] {
+    outline: 0px solid transparent;
+  }

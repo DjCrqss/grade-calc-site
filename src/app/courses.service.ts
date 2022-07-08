@@ -16,7 +16,7 @@ export class CoursesService{
         console.log("=============")
         // get local contents
         if(localStorage.getItem("yearsList") === null){
-            this.years.push(new SchoolYear(2020, []));
+            this.years.push(new SchoolYear('2022', []));
         } else {
             this.items = JSON.parse(localStorage.getItem("yearsList") || '{}');
             for(let curItem of this.items){  // cur item should be a year obj but is a JSON object
@@ -27,7 +27,7 @@ export class CoursesService{
     }
     // Adds a new year object
     addYear(){
-        this.years.push(new SchoolYear(Math.floor(1000 + Math.random() * 1021), []));
+        this.years.push(new SchoolYear("New year", []));
     }
     // Deletes a selected year
     deleteYear(id:SchoolYear){
@@ -36,7 +36,8 @@ export class CoursesService{
         }
     }
     // Getter for years list
-    getYears(){ return this.years; }
+    getYears(){ return this.years;}
+
     // saves to storage
     saveToStorage(content: string){
         localStorage.setItem('yearsList', JSON.stringify(this.years));
@@ -47,9 +48,9 @@ export class CoursesService{
 export class SchoolYear{
     // School year that stores an array of terms (Semester one, Semester two..)
     terms: SchoolTerm[] = [];
-    id: number;
+    id: string;
     // constructor with ID and contents
-    constructor(id: number, items:[]){
+    constructor(id: string, items:[]){
         this.id = id;
         for(let curItem of items){
             this.terms.push(new SchoolTerm(curItem['name']));
@@ -57,7 +58,7 @@ export class SchoolYear{
     }
     // adds a new term/semester
     addTerm(){
-        this.terms.push(new SchoolTerm("Semester " + Math.floor(1 + Math.random() * 9)));
+        this.terms.push(new SchoolTerm('New term'));
     }
     // deletes a selected term
     deleteTerm(id:SchoolTerm){
@@ -70,7 +71,7 @@ export class SchoolYear{
     getTerms(){
         return this.terms;
     }
-    editYear(value:number){
+    editYear(value:string){
         this.id = value;
     }
 
@@ -82,6 +83,7 @@ export class SchoolTerm{
     public name : string;
 
     constructor( name: string){this.name = name}
+    
 }
 
 export class SchoolCourse{
