@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { YearsListComponent } from './years-list/years-list.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { YearComponent } from './years-list/year/year.component';
+import { TermComponent } from './years-list/year/term/term.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     YearsListComponent,
     CourseDetailsComponent,
-    YearComponent
+    YearComponent,
+    TermComponent
   ],
   imports: [
     BrowserModule,

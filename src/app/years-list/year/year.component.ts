@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { SchoolYear, SchoolTerm } from '../../courses.service';
 
 
@@ -43,5 +42,9 @@ export class YearComponent {
       this.yearObj.editYear(id);
       this.requestSave.emit("Edited year");
     }
+  }
+
+  requestSaveTerm(content: string){
+    this.requestSave.emit(content);
   }
 }

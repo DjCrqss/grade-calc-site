@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gantari:wght@500&display=swap');
 h1{
     font-family: 'Gantari', sans-serif;
-    font-size: 5em;
+    font-size: min(16vw, 5em);
+    margin-left: 0.1em;
 }
 .container{
     padding: 1em;

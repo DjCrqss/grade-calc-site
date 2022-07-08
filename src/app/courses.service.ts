@@ -53,12 +53,12 @@ export class SchoolYear{
     constructor(id: string, items:[]){
         this.id = id;
         for(let curItem of items){
-            this.terms.push(new SchoolTerm(curItem['name']));
+            this.terms.push(new SchoolTerm(curItem['id'], curItem['courses']));
         }
     }
     // adds a new term/semester
     addTerm(){
-        this.terms.push(new SchoolTerm('New term'));
+        this.terms.push(new SchoolTerm('New term', []));
     }
     // deletes a selected term
     deleteTerm(id:SchoolTerm){
@@ -80,19 +80,41 @@ export class SchoolYear{
 export class SchoolTerm{
     // School term (semester) that stores an array of courses (ENGR101, CYBR271..)
     courses: SchoolCourse[] = [];
-    public name : string;
+    id : string;
 
-    constructor( name: string){this.name = name}
+    constructor(id: string, items:[]){
+        this.id = id;
+        for(let curItem of items){
+            this.courses.push(new SchoolCourse(curItem['id'], curItem['gradeGoal']));
+        }
+    }
+
+    addCourse(){
+        this.courses.push(new SchoolCourse("CYBR171", 90));
+    }
+
+    deleteCourse(id:SchoolCourse){
+        if(this.courses.findIndex(x => x === id) >= 0){
+            this.courses.splice(this.courses.findIndex(x => x === id), 1);
+        }
+        console.log('Deleted item');
+    }
+
+    getCourses(){
+        return this.courses;
+    }
+
+    editTerm(value: string){
+        this.id = value;
+    }
     
 }
 
 export class SchoolCourse{
     // Spectific course that stores different grade groups (Labs, Assignments, Tests..) and goal grade (90%)
     constructor(
-        id: number,
+        id: string,
         gradeGoal: number,
-        name: string,
-        groups: CourseGroup[] = [],
     ){}
 }
 

@@ -1,0 +1,6 @@
+
+<div class="title_container">
+    <h3 contenteditable="true" #x (keydown.enter)="editTerm(x.innerText); x.blur(); x.innerText = termObj.id" (blur)="editTerm(x.innerText); x.innerText = termObj.id;">{{termObj.id}}</h3>
+    <i class="material-icons edit_btn">edit</i>
+</div>
+<p>Courses will go here</p>
