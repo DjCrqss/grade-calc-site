@@ -1,0 +1,12 @@
+.term_card{
+    width: 100%;
+    background-color: var(--col-three);
+    font-family: 'Gantari', sans-serif;
+    
+    margin-bottom: 1em;
+    padding: 1em;
+
+    border-radius: 1em;
+
+    position: relative;
+}

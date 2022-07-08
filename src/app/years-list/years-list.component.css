@@ -4,7 +4,7 @@
     font-family: 'Gantari', sans-serif;
     
     margin-bottom: 1em;
-    padding: 1em;
+    padding: 1.5em;
 
     border-radius: 1em;
 
@@ -12,14 +12,17 @@
 }
 
 .deletable_card{
-    /* animation: wiggle 0.25s infinite alternate ease-in-out; */
+    /* animation: wiggle 0.2s infinite alternate ease-in-out; */
 }
 
-h2{
-    font-size: 1.5em;
-    margin: 0;
+
+
+
+
+td{
 }
 
+/* Buttons */
 #fab_btn{
     background-color: #8CC6C6;
     box-shadow: 1px 6px 12px 2px #61b5aa88;
@@ -36,15 +39,8 @@ h2{
     position: fixed;
     bottom: 1em;
     right: 1em;
-}
 
-td{
-}
-
-.menu{
-    background-color: green;
-    width: 50px;
-    height: 50px;
+    cursor: pointer;
 }
 
 .close_btn{
@@ -62,12 +58,51 @@ td{
     cursor: pointer;
 
 }
-
+/* Close button wiggle animation */
 @keyframes wiggle {
     from{
-        transform: translateX(-3px);
+        transform: translateX(-2px);
     }
     frotom{
-        transform: translateX(3px);
+        transform: translateX(2px);
     }
+}
+
+.title_container{
+    display: inline-block;
+    cursor: pointer;
+
+}
+.edit_btn{
+    visibility: hidden;
+}
+.title_container:hover .edit_btn{
+    visibility: visible;
+}
+
+.add_btn{
+    display: block;
+    cursor: pointer;
+    background-color: #8CC6C6;
+    width: 1em;
+    border-radius: 1em;
+    padding: 0.35em;
+}
+
+
+/* Titles */
+h2{ /* Years */
+    font-size: 2em;
+    margin: 0 0.2em 0.5em 0;
+    display: inline-block;
+}
+
+h3{ /* Terms/Semesters */
+    font-size: 2em;
+    margin: 0 0 0.5em 0;
+}
+
+h4{ /* Courses */
+    font-size: 2em;
+    margin: 0 0 0.5em 0;
 }

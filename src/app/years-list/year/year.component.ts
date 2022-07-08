@@ -5,7 +5,7 @@ import { SchoolYear, SchoolTerm } from '../../courses.service';
 @Component({
   selector: 'app-year',
   templateUrl: './year.component.html',
-  styleUrls: ['./year.component.css']
+  styleUrls: ['./year.component.css', '.././years-list.component.css']
 })
 
 export class YearComponent {
@@ -19,7 +19,7 @@ export class YearComponent {
   ngOnInit(): void {
     // console.log(this.yearObj);
     this.items = this.yearObj.getTerms();
-    console.log("Year contents: " + this.items);
+    // console.log("Year contents: " + this.items);
   }
 
   deleteTerm(id:SchoolTerm){
@@ -33,6 +33,11 @@ export class YearComponent {
     this.requestSave.emit("Term added");
   }
   
+  editYear(){
+
+    this.yearObj.editYear(2022);
+    this.requestSave.emit("Edited year");
+  }
 
   // Menu
   toggleMenu(){

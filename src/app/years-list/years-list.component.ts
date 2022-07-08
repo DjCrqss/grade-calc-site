@@ -15,7 +15,7 @@ export class YearsListComponent{
   
   
   constructor(private route: ActivatedRoute, private cs: CoursesService) {
-    console.log("Root contents: " + this.items);
+    // console.log("Root contents: " + this.items);
   }
 
   deleteYear(id:SchoolYear){

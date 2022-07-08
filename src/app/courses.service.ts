@@ -11,7 +11,9 @@ export class CoursesService{
     items:[] = [];
     // Constructor
     constructor(){
-        console.log( JSON.parse(localStorage.getItem("yearsList") || '{}'));
+        console.log("LocalStorage data: ");
+        console.log(JSON.parse(localStorage.getItem("yearsList") || '{}'));
+        console.log("=============")
         // get local contents
         if(localStorage.getItem("yearsList") === null){
             this.years.push(new SchoolYear(2020, []));
@@ -35,7 +37,6 @@ export class CoursesService{
     }
     // Getter for years list
     getYears(){ return this.years; }
-
     // saves to storage
     saveToStorage(content: string){
         localStorage.setItem('yearsList', JSON.stringify(this.years));
@@ -68,6 +69,9 @@ export class SchoolYear{
     // Getter for terms list
     getTerms(){
         return this.terms;
+    }
+    editYear(value:number){
+        this.id = value;
     }
 
 }
