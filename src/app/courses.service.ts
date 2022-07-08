@@ -8,74 +8,76 @@ import { HttpClient } from '@angular/common/http';
 // ROOT ELEMENT THAT STORES THE TREE
 export class CoursesService{
     years: SchoolYear[] = [];
-
-    // temporary
+    items:[] = [];
+    // Constructor
     constructor(){
+        console.log( JSON.parse(localStorage.getItem("yearsList") || '{}'));
+        // get local contents
         if(localStorage.getItem("yearsList") === null){
-            this.years.push(new SchoolYear(2020));
-            this.years.push(new SchoolYear(2021));
+            this.years.push(new SchoolYear(2020, []));
         } else {
-            this.years = JSON.parse(localStorage.getItem("yearsList") || '{}');
+            this.items = JSON.parse(localStorage.getItem("yearsList") || '{}');
+            for(let curItem of this.items){  // cur item should be a year obj but is a JSON object
+                this.years.push(new SchoolYear(curItem['id'], curItem['terms']))
+            }
+            
         }
-        
     }
-
+    // Adds a new year object
     addYear(){
-        this.years.push(new SchoolYear(Math.floor(1000 + Math.random() * 1021)));
-        console.log("Added new item");
-
-        this.saveToStorage();
+        this.years.push(new SchoolYear(Math.floor(1000 + Math.random() * 1021), []));
     }
-
-    deleteYear(id:number){
-        // IMPROVE THIS LATER
-        console.log(this.years);
-        this.years.reverse();
-        if(this.years.findIndex(x => x.id === id) >= 0){
-            console.log(this.years.findIndex(x => x.id === id));
-            this.years.splice(this.years.findIndex(x => x.id === id), 1);
+    // Deletes a selected year
+    deleteYear(id:SchoolYear){
+        if(this.years.findIndex(x => x === id) >= 0){
+            this.years.splice(this.years.findIndex(x => x === id), 1);
         }
-        this.years.reverse();
-
-        console.log('Deleted item');
-        this.saveToStorage();
-
     }
-
+    // Getter for years list
     getYears(){ return this.years; }
 
-
-
-    // public get CoursesService(): CoursesService{
-    //     return JSON.parse(localStorage.getItem('rootNode'));
-    // }
-    // public set CoursesService(value: CoursesService){
-    //     localStorage.setItem('rootNode', JSON.stringify(this.years))
-    // }
-
-    saveToStorage(){
+    // saves to storage
+    saveToStorage(content: string){
         localStorage.setItem('yearsList', JSON.stringify(this.years));
+        console.log("Data saved with event: " + content);
     }
-
 }
 
 export class SchoolYear{
     // School year that stores an array of terms (Semester one, Semester two..)
-    protected terms: SchoolTerm[] = [];
-    public id: number;
-    // constructor with ID
-    constructor(id: number){
+    terms: SchoolTerm[] = [];
+    id: number;
+    // constructor with ID and contents
+    constructor(id: number, items:[]){
         this.id = id;
+        for(let curItem of items){
+            this.terms.push(new SchoolTerm(curItem['name']));
+        }
     }
+    // adds a new term/semester
+    addTerm(){
+        this.terms.push(new SchoolTerm("Semester " + Math.floor(1 + Math.random() * 9)));
+    }
+    // deletes a selected term
+    deleteTerm(id:SchoolTerm){
+        if(this.terms.findIndex(x => x === id) >= 0){
+            this.terms.splice(this.terms.findIndex(x => x === id), 1);
+        }
+        console.log('Deleted item');
+    }
+    // Getter for terms list
+    getTerms(){
+        return this.terms;
+    }
+
 }
 
 export class SchoolTerm{
     // School term (semester) that stores an array of courses (ENGR101, CYBR271..)
     courses: SchoolCourse[] = [];
+    public name : string;
 
-    constructor(
-        name: string
-    ){}
+    constructor( name: string){this.name = name}
 }
 
 export class SchoolCourse{

@@ -1,1 +1,10 @@
-<h1>{{yearObj?.id}}</h1>
+<h1>{{yearObj.id}}</h1>
+<table class="term_card deletable_card" *ngFor="let curTerm of items">
+    {{curTerm.name}}
+    <!-- Create instances of year objects and send the year item through -->
+    <!-- <app-year [yearObj]="curYear" ></app-year> -->
+    <!-- Create close button -->
+    <i class="material-icons close_btn" (click)="deleteTerm(curTerm)">close</i>
+</table>
+
+<i class="material-icons" (click)="addNewTerm()">add</i>
