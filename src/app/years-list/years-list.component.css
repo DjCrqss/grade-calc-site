@@ -11,6 +11,12 @@
     position: relative;
 }
 
+@media screen and (max-width: 520px){ /* Large-Mobile */
+	.year_card{
+        padding: 1em 0.75em;
+    }
+}
+
 .deletable_card{
     /* animation: wiggle 0.22s infinite alternate ease-in-out; */
 }
@@ -72,10 +78,12 @@ td{
 .title_container{
     display: block;
     cursor: pointer;
+    width: fit-content;
 }
 .edit_btn{
     visibility: hidden;
     opacity: 0.25;
+    font-size: 1.2em;
 }
 .title_container:hover .edit_btn{
     visibility: visible;
@@ -110,8 +118,9 @@ h3{ /* Terms/Semesters */
 }
 
 h4{ /* Courses */
-    font-size: 2em;
-    margin: 0 0 0.5em 0;
+    font-size: 1em;
+    line-height: 2em;
+    margin: 0 0.2em 0 0;
     display: inline-block;
     max-width: 60vw;
     word-wrap: break-word;

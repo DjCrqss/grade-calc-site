@@ -30,6 +30,7 @@ export class YearsListComponent{
     this.requestSave("Year added");
   }
 
+  // Call root to save
   requestSave(content: string){
     this.cs.saveToStorage(content);
   }

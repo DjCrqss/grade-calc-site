@@ -6,5 +6,12 @@ h1{
 }
 .container{
     padding: 1em;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+@media screen and (max-width: 520px){ /* Large-Mobile */
+	.container{
+        padding: 1em 0.5em;
+    }
+}

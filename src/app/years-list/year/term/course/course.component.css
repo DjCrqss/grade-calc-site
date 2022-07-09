@@ -1,0 +1,14 @@
+.fixed_edit_btn{
+    opacity: 0.45;
+    font-size: 1em;
+    animation: fade 1s ease-in-out infinite alternate;
+}
+
+.centered_content{
+    margin: 0 auto;
+}
+
+@keyframes fade {
+    from{opacity: 0.2;}
+    to{opacity: 0.5;}
+}

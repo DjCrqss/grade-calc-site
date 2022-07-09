@@ -1,0 +1,26 @@
+.course_card{
+    width: calc(50% - 1em);
+
+    background-color: var(--col-four);
+    font-family: 'Gantari', sans-serif;
+    
+    margin-bottom: 1em;
+    padding: 1em;
+
+    border-radius: 5em;
+
+    position: relative;
+    display: inline-block;
+    margin-right: 1em;
+
+    
+}
+
+
+@media screen and (max-width: 480px){ /* Large-Mobile */
+	.course_card{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5em 2em;
+    }
+}

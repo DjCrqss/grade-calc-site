@@ -5,9 +5,7 @@
 </div>
 <table class="term_card deletable_card" *ngFor="let curTerm of items">
      <!-- Create instances of term objects and send the term item through -->
-    <!-- {{curTerm.id}} -->
-    <app-term [termObj]="curTerm" (requestSave)="requestSaveTerm($event)"></app-term>
-    <!-- <app-year [yearObj]="curYear" ></app-year> -->
+    <app-term [termObj]="curTerm" (requestSaveTerm)="requestSaveTerm($any($event))"></app-term>
     <!-- Create close button -->
     <i class="material-icons close_btn" (click)="deleteTerm(curTerm)">close</i>
 </table>

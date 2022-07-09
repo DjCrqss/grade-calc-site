@@ -8,6 +8,7 @@ import { YearsListComponent } from './years-list/years-list.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { YearComponent } from './years-list/year/year.component';
 import { TermComponent } from './years-list/year/term/term.component';
+import { CourseComponent } from './years-list/year/term/course/course.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TermComponent } from './years-list/year/term/term.component';
     YearsListComponent,
     CourseDetailsComponent,
     YearComponent,
-    TermComponent
+    TermComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,

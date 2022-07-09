@@ -11,11 +11,9 @@ import { SchoolYear, SchoolTerm } from '../../courses.service';
 
 export class YearComponent {
    @Input() yearObj!: SchoolYear; //| undefined
-   @Output() requestSave = new EventEmitter<string>();
+   @Output() requestSaveYear = new EventEmitter<string>();
    
-
    items: SchoolTerm[] = [];
-
 
   ngOnInit(): void {
     // console.log(this.yearObj);
@@ -25,26 +23,29 @@ export class YearComponent {
 
   deleteTerm(id:SchoolTerm){
     this.yearObj.deleteTerm(id);
-    this.requestSave.emit("Term deleted");
+    this.requestSaveYear.emit("Term deleted");
   }
 
   // Add new year
   addNewTerm(){
     this.yearObj.addTerm();
-    this.requestSave.emit("Term added");
+    this.requestSaveYear.emit("Term added");
   }
   
+  // edit year
   editYear(id:string){
     // remove newlines
     id.replace(/\r?\n|\r/g, "");
     // check length then edit year if good
     if(id.length > 0){
       this.yearObj.editYear(id);
-      this.requestSave.emit("Edited year");
+      this.requestSaveYear.emit("Edited year");
+
     }
   }
 
+  // call root component to save when itself or children are modified
   requestSaveTerm(content: string){
-    this.requestSave.emit(content);
+    this.requestSaveYear.emit(content);
   }
 }

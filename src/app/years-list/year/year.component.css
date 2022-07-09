@@ -11,3 +11,9 @@
     position: relative;
     
 }
+
+@media screen and (max-width: 520px){ /* Large-Mobile */
+	.term_card{
+        padding: 1em 0.75em;
+    }
+}
