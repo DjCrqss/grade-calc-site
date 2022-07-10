@@ -17,8 +17,8 @@
     }
 }
 
-.deletable_card{
-    /* animation: wiggle 0.22s infinite alternate ease-in-out; */
+.deletable_card_true{
+    animation: wiggle 0.22s infinite alternate ease-in-out;
 }
 
 
@@ -36,7 +36,7 @@ td{
     font-family: 'Gantari', sans-serif;
     font-size: 2em;
     color: #FFF;
-    width: 2em;
+    min-width: 2em;
     line-height: 2em;
     text-align: center;
     border-radius: 1em;
@@ -45,6 +45,24 @@ td{
     position: fixed;
     bottom: 1em;
     right: 1em;
+
+    cursor: pointer;
+}
+
+.delete_toggle{
+    background-color: #8CC6C6;
+    box-shadow: 1px 6px 12px 2px #61b5aa88;
+    font-size: 1.25em;
+    color: #FFF;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    border-radius: 1em;
+    user-select: none;
+
+    position: fixed;
+    bottom: 5.5em;
+    right: 2.15em;
 
     cursor: pointer;
 }
@@ -70,7 +88,7 @@ td{
     from{
         transform: translateX(-2px);
     }
-    frotom{
+    to{
         transform: translateX(2px);
     }
 }

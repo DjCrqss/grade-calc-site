@@ -1,9 +1,22 @@
 <div class="centered_content title_container ">
+    <!-- Home screen button -->
     <h4 [attr.contentEditable] = 'courseObj.needsName' #x 
     (keydown.enter)="editCourse(x.innerText); x.blur(); x.innerText = courseObj.id;" 
     (blur)="editCourse(x.innerText); x.innerText = courseObj.id;">{{courseObj.id}}</h4>
     <!-- replace edit btn with a container that allows clicking to be linked -->
     <i class="material-icons fixed_edit_btn" *ngIf="courseObj.needsName">edit</i>
+
+    <!-- Actual content area -->
+    <main id="course_page_bg" *ngIf="courseObj.isOpen" (click)="$event.stopPropagation();">
+        <section id="course_page_container">
+            <h1>{{courseObj.id}}</h1>
+            <h2>Grade goal: {{courseObj.gradeGoal}}</h2>
+            <article id="grades">
+                <hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P></P>
+            </article>
+            <span id="close_win_btn" (click)="$event.stopPropagation(); courseObj.toggleOpen()">Return</span>
+        </section>
+    </main>
 </div>
 
 <!-- contentEditable='{{courseObj.needsName}}' -->

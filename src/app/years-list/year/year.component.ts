@@ -1,8 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SchoolYear, SchoolTerm } from '../../courses.service';
 
-
-
 @Component({
   selector: 'app-year',
   templateUrl: './year.component.html',
@@ -11,6 +9,7 @@ import { SchoolYear, SchoolTerm } from '../../courses.service';
 
 export class YearComponent {
    @Input() yearObj!: SchoolYear; //| undefined
+   @Input() isEditing!: boolean;
    @Output() requestSaveYear = new EventEmitter<string>();
    
    items: SchoolTerm[] = [];

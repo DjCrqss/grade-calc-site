@@ -13,19 +13,10 @@ export class CourseComponent {
   @Input() courseObj!: SchoolCourse; //| undefined
   @Output() requestSaveCourse = new EventEmitter<string>();
 
-  items: CourseGroup[] = [];
-
-
-  openCourse(){
-    console.log('click');
-  }
+  items: CourseGroup[] = []; // Appears in the popup window
 
  ngOnInit(): void {
-   // console.log(this.yearObj);
    this.items = this.courseObj.getGroups();
-   // console.log("Year contents: " + this.items);
-  //  this.requestSaveCourse.emit("TESTINg");
-   
  }
 
  deleteGroup(id:CourseGroup){

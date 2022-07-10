@@ -10,6 +10,7 @@ import { SchoolCourse, SchoolTerm } from 'src/app/courses.service';
 
 export class TermComponent {
   @Input() termObj!: SchoolTerm; //| undefined
+  @Input() isEditing2!: boolean;
   @Output() requestSaveTerm = new EventEmitter<string>();
   
 
@@ -45,6 +46,8 @@ export class TermComponent {
     
    }
  }
+
+
 
   // call to save when this term or it's children is modified  
  requestSaveCourse(content: string){

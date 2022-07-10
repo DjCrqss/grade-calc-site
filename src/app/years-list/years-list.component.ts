@@ -12,10 +12,12 @@ import { CoursesService, SchoolYear } from '../courses.service';
 export class YearsListComponent{
   // Retrieve values
   items = this.cs.getYears();
+  CoursesObj:CoursesService; 
   
   // constructor for original object
   constructor(private route: ActivatedRoute, private cs: CoursesService) {
     // console.log("Root contents: " + this.items);
+    this.CoursesObj = cs;
   }
 
   deleteYear(id:SchoolYear){
@@ -33,5 +35,9 @@ export class YearsListComponent{
   // Call root to save
   requestSave(content: string){
     this.cs.saveToStorage(content);
+  }
+
+  toggleEdit(){
+    this.cs.toggleEditing();
   }
 }

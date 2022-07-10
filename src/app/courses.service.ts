@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
-  })
+})
 
 
 // ROOT ELEMENT THAT STORES THE TREE
 export class CoursesService{
     years: SchoolYear[] = [];
     items:[] = [];
+    isEditing:boolean = false;
     // Constructor
     constructor(){
         console.log("LocalStorage data: ");
@@ -42,6 +43,10 @@ export class CoursesService{
     saveToStorage(content: string){
         localStorage.setItem('yearsList', JSON.stringify(this.years));
         console.log("Data saved with event: " + content);
+    }
+
+    toggleEditing(){
+        this.isEditing ? this.isEditing = false : this.isEditing = true;
     }
 }
 
@@ -115,6 +120,7 @@ export class SchoolCourse{
     id: string;
     gradeGoal: number;
     needsName: boolean = false;
+    isOpen: boolean = false;
     // constructor with ID and contents
     constructor(id: string, gradeGoal: number, items:[]){
         this.id = id;
@@ -141,6 +147,11 @@ export class SchoolCourse{
     editCourse(value: string){
         this.id = value;
         this.needsName = this.id == "New course" ? true : false;
+    }
+
+    toggleOpen(){
+        console.log("Toggled");
+        this.isOpen = !this.isOpen;
     }
 
 }

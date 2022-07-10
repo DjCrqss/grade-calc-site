@@ -3,6 +3,10 @@ body{
     font-size: 16px;
     background-color: var(--col-one);
     color: var(--text-col);
+    margin: 0;
+    user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 }
 
 
