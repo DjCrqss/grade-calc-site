@@ -12,10 +12,11 @@
     position: relative;
     display: inline-block;
     margin-right: 1em;
-
-    
 }
 
+.hover_false{
+    cursor: pointer;
+}
 
 @media screen and (max-width: 480px){ /* Large-Mobile */
 	.course_card{

@@ -8,13 +8,19 @@ h1{
     padding: 1em;
     max-width: 800px;
     margin: 0 auto;
-    height: 100vh;
+    
+    /* height: 100vh; */
     /* overflow-y: hidden; */
     box-sizing: border-box;
+
+
 }
+
 
 @media screen and (max-width: 520px){ /* Large-Mobile */
 	.container{
-        padding: 1em 0.5em;
+        padding: 1em 0.6em;
     }
 }
+
+

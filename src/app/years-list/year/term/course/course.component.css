@@ -13,6 +13,9 @@
     to{opacity: 0.5;}
 }
 
+
+
+
 #course_page_bg{
     position: fixed;
     left: 0;
@@ -55,8 +58,20 @@
     padding: 1em;
     max-width: 800px;
     margin: 0 auto;
-    height: 90vh;
+    height: calc(100vh - 75px);
     overflow-y: scroll;
+    overscroll-behavior: none;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#course_page_container::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+#course_page_container::-webkit-scrollbar-thumb {
+    background-color: #aaa;
 }
 
 h1{
@@ -66,6 +81,7 @@ h1{
     background-color: var(--col-one);
     padding: 0.25em;
     border-radius: 18px;
+    cursor: pointer;
 }
 
 h2{
@@ -80,5 +96,8 @@ h2{
 #grades{
     background-color: var(--col-one);
     width: 100%;
-    min-height: 90vh;
+    min-height: 100vh;
+    border-radius: 1em;
+    box-sizing: border-box;
+    padding: 1em;
 }

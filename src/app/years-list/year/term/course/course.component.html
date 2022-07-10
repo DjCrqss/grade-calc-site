@@ -9,10 +9,12 @@
     <!-- Actual content area -->
     <main id="course_page_bg" *ngIf="courseObj.isOpen" (click)="$event.stopPropagation();">
         <section id="course_page_container">
-            <h1>{{courseObj.id}}</h1>
+            <!-- <h1>{{courseObj.id}}</h1> -->
+            <h1 contenteditable="true" #x (keydown.enter)="editCourse(x.innerText); x.blur(); x.innerText = courseObj.id" (blur)="editCourse(x.innerText); x.innerText = courseObj.id;">{{courseObj.id}}</h1>
+
             <h2>Grade goal: {{courseObj.gradeGoal}}</h2>
             <article id="grades">
-                <hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P></P>
+                stuff<hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P></P>
             </article>
             <span id="close_win_btn" (click)="$event.stopPropagation(); courseObj.toggleOpen()">Return</span>
         </section>

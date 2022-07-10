@@ -21,13 +21,6 @@
     animation: wiggle 0.22s infinite alternate ease-in-out;
 }
 
-
-
-
-
-td{
-}
-
 /* Buttons */
 #fab_btn{
     background-color: #8CC6C6;
@@ -86,10 +79,10 @@ td{
 /* Close button wiggle animation */
 @keyframes wiggle {
     from{
-        transform: translateX(-2px);
+        transform: translateX(0px);
     }
     to{
-        transform: translateX(2px);
+        transform: translateX(-1px);
     }
 }
 
@@ -147,3 +140,6 @@ h4{ /* Courses */
 [contenteditable] {
     outline: 0px solid transparent;
   }
+
+
+      

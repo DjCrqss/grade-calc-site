@@ -23,3 +23,15 @@ body{
 }
 
 
+::-webkit-scrollbar{
+    background-color: #ccc;
+   
+    width: max(5px, min(0.75vw, 10px));
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 1em;
+}
+
+
