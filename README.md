@@ -1,4 +1,4 @@
-# MyApp (Grade Calculator Website)
+# Grade Calculator Website
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
 
 This is my project I have created while in the process of teaching myself how to use Angular to create progressive web apps.
