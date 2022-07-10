@@ -34,7 +34,7 @@ export class YearComponent {
   // edit year
   editYear(id:string){
     // remove newlines
-    id.replace(/\r?\n|\r/g, "");
+    id = id.replace(/\r?\n|\r/g, "");
     // check length then edit year if good
     if(id.length > 0){
       this.yearObj.editYear(id);

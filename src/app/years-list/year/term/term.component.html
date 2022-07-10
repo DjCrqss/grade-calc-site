@@ -1,10 +1,10 @@
 <!-- Heading and edit button -->
 <div class="title_container">
-    <h3 contenteditable="true" #x (keydown.enter)="editTerm(x.innerText); x.blur(); x.innerText = termObj.id" (blur)="editTerm(x.innerText); x.innerText = termObj.id;">{{termObj.id}}</h3>
+    <h3 contenteditable="true" #x (keydown.enter)="editTerm(x.innerText); x.blur(); x.textContent = termObj.id" (blur)="editTerm(x.innerText); x.textContent = termObj.id;">{{termObj.id}}</h3>
     <i class="material-icons edit_btn">edit</i>
 </div>
 <!-- Courses -->
-<table class="course_card hover_{{curCourse.needsName}} deletable_card_{{isEditing2}}" *ngFor="let curCourse of items" (click)="!isEditing2 && !curCourse.needsName && curCourse.toggleOpen(); requestSaveCourse('Toggled open')">
+<table class="card course_card hover_{{curCourse.needsName}} deletable_card_{{isEditing2}}" *ngFor="let curCourse of items" (click)="!isEditing2 && !curCourse.needsName && curCourse.toggleOpen(); requestSaveCourse('Toggled open')">
     <!-- Create instances of term objects and send the term item through -->
    <app-course [courseObj]="curCourse" (requestSaveCourse)="requestSaveCourse($any($event))"></app-course>
    <!-- Create close button -->

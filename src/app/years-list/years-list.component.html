@@ -1,4 +1,4 @@
-<table class="year_card deletable_card_{{this.CoursesObj.isEditing}}" *ngFor="let curYear of items">
+<table class="card year_card deletable_card_{{this.CoursesObj.isEditing}}" *ngFor="let curYear of items">
     <!-- Create instances of year objects and send the year item through -->
     <app-year [yearObj]="curYear" [isEditing]="this.CoursesObj.isEditing" (requestSaveYear)="requestSave($event)"></app-year>
     <!-- Create close button -->

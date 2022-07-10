@@ -94,7 +94,7 @@ export class SchoolTerm{
     }
     //  adds a new course
     addCourse(){
-        this.courses.push(new SchoolCourse("New course", 100, false, []));
+        this.courses.push(new SchoolCourse("New course", 0, false, []));
     }
     //  deletes a selected course
     deleteCourse(id:SchoolCourse){
@@ -150,10 +150,26 @@ export class SchoolCourse{
         this.id = value;
         this.needsName = this.id == "New course" ? true : false;
     }
+
+    editGoal(value: number){
+        this.gradeGoal = value;
+    }
+
     // toggle open status
     toggleOpen(){
         this.isOpen = !this.isOpen;
     }
+
+    // GROUPS
+    editGroup(id:CourseGroup, value:string){
+        // find group with specific name
+        if(this.groups.findIndex(x => x === id) >= 0){
+            this.groups[this.groups.findIndex(x => x === id)].editGroup(value);
+        }
+    }
+
+
+    // GRADES
 
 }
 
@@ -188,6 +204,8 @@ export class CourseGroup{
     editGroup(value: string){
         this.id = value;
     }
+
+
 }
 
 export class GradeItem{

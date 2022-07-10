@@ -1,8 +1,8 @@
 <div class="centered_content title_container ">
     <!-- Home screen button -->
     <h4 [attr.contentEditable] = 'courseObj.needsName' #x 
-    (keydown.enter)="editCourse(x.innerText); x.blur(); x.innerText = courseObj.id;" 
-    (blur)="editCourse(x.innerText); x.innerText = courseObj.id;">{{courseObj.id}}</h4>
+    (keydown.enter)="editCourse(x.innerText); x.blur(); x.textContent = courseObj.id;" 
+    (blur)="editCourse(x.innerText); x.textContent = courseObj.id;">{{courseObj.id}}</h4>
     <!-- replace edit btn with a container that allows clicking to be linked -->
     <i class="material-icons fixed_edit_btn" *ngIf="courseObj.needsName">edit</i>
 
@@ -10,26 +10,49 @@
     <main id="course_page_bg" *ngIf="courseObj.isOpen" (click)="$event.stopPropagation();">
         <section id="course_page_container">
             <!-- Title section -->
-            <h1 contenteditable="true" #x (keydown.enter)="editCourse(x.innerText); x.blur(); x.innerText = courseObj.id" (blur)="editCourse(x.innerText); x.innerText = courseObj.id;">{{courseObj.id}}</h1>
+            <h1 contenteditable="true" #x (keydown.enter)="editCourse(x.innerText); x.blur(); x.textContent = courseObj.id" (blur)="editCourse(x.innerText); x.textContent = courseObj.id;">{{courseObj.id}}</h1>
             <!-- Grade goal section -->
-            <h2>Grade goal: {{courseObj.gradeGoal}}</h2>
+            <div id="goal_container">
+                <h2>Grade goal:&nbsp;</h2>
+                <h2 contenteditable="true" #y (keydown.enter)="editGoal(y.innerText); y.blur(); y.innerText = ''+courseObj.gradeGoal"
+                (blur)="editGoal(y.innerText); y.innerText = ''+courseObj.gradeGoal;">{{courseObj.gradeGoal}}</h2><h2>%</h2>
+                <i class="material-icons edit_btn">edit</i>
+                <i *ngIf="courseObj.gradeGoal === 0" class="material-icons large_edit_btn">edit</i>
+            </div>
+
+
             <!-- Grade section -->
             <article id="grades">
                 <!-- Have for loop for groups -->
                 <div *ngFor="let curGroup of courseObj.groups">
-                    <h3>{{curGroup.id}}</h3>
+                    <div class="title_container">
+                        <!-- <h2 contenteditable="true" #x (keydown.enter)="editYear(x.innerText);" (keyup.enter)="x.innerText = yearObj.id; x.blur()" >{{yearObj.id}}</h2> -->
+                        <h3 contenteditable="true" #z 
+                        (keydown.enter)="editGroup(curGroup, z.innerText); z.blur(); z.textContent = curGroup.id" 
+                        (blur)="editGroup(curGroup, z.innerText); z.textContent = curGroup.id;" >{{curGroup.id}}</h3>
+
+                        <i class="material-icons edit_btn">edit</i>
+                    </div>
+
+                    
                     <!-- Have for loop for grade cards -->
                     <div *ngFor="let curGrade of curGroup.grades">
                         A grade entry.
                     </div>
+
                     <!-- Add new grade button -->
                     <h5 (click)="curGroup.addGrade()">&lt;Add grade&gt;</h5> <!-- make this a method in the ts file instead and parse obj through so we can save -->
                 </div>
+
                 <!-- Add new group button -->
                 <h4 (click)="addNewGroup()">&lt;Add course group&gt;</h4>
             </article>
-            <!-- Results section? -->
 
+
+            <!-- Results section? -->
+            <div id="results_container">
+                <h2>Current grade: xx</h2>
+            </div>
             <!-- Close button -->
             <span id="close_win_btn" (click)="$event.stopPropagation(); courseObj.toggleOpen(); requestSaveGroup('Toggled close')">Return</span>
         </section>

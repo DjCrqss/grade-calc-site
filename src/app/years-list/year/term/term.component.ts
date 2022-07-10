@@ -38,7 +38,7 @@ export class TermComponent {
 //  edit term
  editTerm(id:string){
    // remove newlines
-   id.replace(/\r?\n|\r/g, "");
+   id = id.replace(/\r?\n|\r/g, "");
    // check length then edit year if good
    if(id.length > 0){
      this.termObj.editTerm(id);

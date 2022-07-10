@@ -86,6 +86,9 @@
     }
 }
 
+
+
+
 .title_container{
     display: block;
     cursor: pointer;
@@ -96,7 +99,7 @@
     opacity: 0.25;
     font-size: 1.2em;
 }
-.title_container:hover .edit_btn{
+.title_container:hover > .edit_btn{
     visibility: visible;
 }
 
@@ -112,7 +115,7 @@
 
 
 /* Titles */
-h2{ /* Years */
+.title_container h2{ /* Years */
     font-size: 2em;
     margin: 0 0.2em 0.5em 0;
     display: inline-block;
@@ -120,7 +123,7 @@ h2{ /* Years */
     word-wrap: break-word;
 }
 
-h3{ /* Terms/Semesters */
+.title_container h3{ /* Terms/Semesters */
     font-size: 1.5em;
     margin: 0 0.2em 0.5em 0;
     display: inline-block;
@@ -128,7 +131,7 @@ h3{ /* Terms/Semesters */
     word-wrap: break-word;
 }
 
-h4{ /* Courses */
+.title_container h4{ /* Courses */
     font-size: 1em;
     line-height: 2em;
     margin: 0 0.2em 0 0;
