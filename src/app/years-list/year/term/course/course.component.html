@@ -9,16 +9,22 @@
     <!-- Actual content area -->
     <main id="course_page_bg" *ngIf="courseObj.isOpen" (click)="$event.stopPropagation();">
         <section id="course_page_container">
-            <!-- <h1>{{courseObj.id}}</h1> -->
+            <!-- Title section -->
             <h1 contenteditable="true" #x (keydown.enter)="editCourse(x.innerText); x.blur(); x.innerText = courseObj.id" (blur)="editCourse(x.innerText); x.innerText = courseObj.id;">{{courseObj.id}}</h1>
-
+            <!-- Grade goal section -->
             <h2>Grade goal: {{courseObj.gradeGoal}}</h2>
+            <!-- Grade section -->
             <article id="grades">
-                stuff<hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P></P>
+                <h3 (click)="addNewGroup()">Click me</h3>
+                <!-- Have for loop for groups -->
+                <h3 *ngFor="let curGroup of courseObj.groups">{{curGroup.id}}</h3>
+                    <!-- Have for loop for grade cards -->
+                <!-- stuff<hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P></P> -->
             </article>
-            <span id="close_win_btn" (click)="$event.stopPropagation(); courseObj.toggleOpen()">Return</span>
+            <!-- Results section? -->
+
+            <!-- Close button -->
+            <span id="close_win_btn" (click)="$event.stopPropagation(); courseObj.toggleOpen(); requestSaveGroup('Toggled close')">Return</span>
         </section>
     </main>
 </div>
-
-<!-- contentEditable='{{courseObj.needsName}}' -->

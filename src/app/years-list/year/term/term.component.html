@@ -4,7 +4,7 @@
     <i class="material-icons edit_btn">edit</i>
 </div>
 <!-- Courses -->
-<table class="course_card hover_{{curCourse.needsName}} deletable_card_{{isEditing2}}" *ngFor="let curCourse of items" (click)="!isEditing2 && !curCourse.needsName && curCourse.toggleOpen()">
+<table class="course_card hover_{{curCourse.needsName}} deletable_card_{{isEditing2}}" *ngFor="let curCourse of items" (click)="!isEditing2 && !curCourse.needsName && curCourse.toggleOpen(); requestSaveCourse('Toggled open')">
     <!-- Create instances of term objects and send the term item through -->
    <app-course [courseObj]="curCourse" (requestSaveCourse)="requestSaveCourse($any($event))"></app-course>
    <!-- Create close button -->

@@ -38,13 +38,12 @@ export class CoursesService{
     }
     // Getter for years list
     getYears(){ return this.years;}
-
     // saves to storage
     saveToStorage(content: string){
         localStorage.setItem('yearsList', JSON.stringify(this.years));
         console.log("Data saved with event: " + content);
     }
-
+    // Toggles deleting all elements
     toggleEditing(){
         this.isEditing ? this.isEditing = false : this.isEditing = true;
     }
@@ -52,8 +51,8 @@ export class CoursesService{
 
 export class SchoolYear{
     // School year that stores an array of terms (Semester one, Semester two..)
-    terms: SchoolTerm[] = [];
     id: string;
+    terms: SchoolTerm[] = [];
     // constructor with ID and contents
     constructor(id: string, items:[]){
         this.id = id;
@@ -84,18 +83,18 @@ export class SchoolYear{
 
 export class SchoolTerm{
     // School term (semester) that stores an array of courses (ENGR101, CYBR271..)
-    courses: SchoolCourse[] = [];
     id : string;
+    courses: SchoolCourse[] = [];
     // Constructor with ID and contents
     constructor(id: string, items:[]){
         this.id = id;
         for(let curItem of items){
-            this.courses.push(new SchoolCourse(curItem['id'], curItem['gradeGoal'], curItem['groups']));
+            this.courses.push(new SchoolCourse(curItem['id'], curItem['gradeGoal'], curItem['isOpen'] , curItem['groups']));
         }
     }
     //  adds a new course
     addCourse(){
-        this.courses.push(new SchoolCourse("New course", 100, []));
+        this.courses.push(new SchoolCourse("New course", 100, false, []));
     }
     //  deletes a selected course
     deleteCourse(id:SchoolCourse){
@@ -116,68 +115,78 @@ export class SchoolTerm{
 
 export class SchoolCourse{
     // Spectific course that stores different grade groups (Labs, Assignments, Tests..) and goal grade (90%)
-    groups: CourseGroup[] = [];
     id: string;
+    groups: CourseGroup[] = [];
     gradeGoal: number;
     needsName: boolean = false;
-    isOpen: boolean = false;
+    isOpen: boolean;
     // constructor with ID and contents
-    constructor(id: string, gradeGoal: number, items:[]){
+    constructor(id: string, gradeGoal: number, isOpen: boolean, items:[]){
         this.id = id;
+        this.isOpen = isOpen;
         this.gradeGoal = gradeGoal;
-        for(let curItem of items){
-            this.groups.push(new CourseGroup("New group"));
-        }
         this.needsName = this.id == "New course" ? true : false;
+        for(let curItem of items){
+            this.groups.push(new CourseGroup(curItem['id'], curItem['grades']));
+        }
     }
-    // UNUSED TILL NEXT ROUTER PAGE CREATED
+    // Add course group
     addGroup(){
-        this.groups.push(new CourseGroup("New group"));
+        this.groups.push(new CourseGroup("New group", []));
     }
+    // Delete specific course group
     deleteGroup(id:CourseGroup){
         if(this.groups.findIndex(x => x === id) >= 0){
             this.groups.splice(this.groups.findIndex(x => x === id), 1);
         }
         console.log('Deleted group');
     }
+    // return course groups
     getGroups(){
         return this.groups;
     }
-    // END OF UNUSED
+    // edit course name (self)
     editCourse(value: string){
         this.id = value;
         this.needsName = this.id == "New course" ? true : false;
     }
-
+    // toggle open status
     toggleOpen(){
-        console.log("Toggled");
         this.isOpen = !this.isOpen;
     }
 
 }
 
 
-
-
-
 export class CourseGroup{
     // Group that stores grades in it (Assn 1, Assn 2..)
-    constructor(
-        id: string,
-        // items: GradeItem[] = [],
-    ){}
+    id: string;
+    grades: GradeItem[] = [];
+    // Constructor
+    constructor( id: string, items:[]){
+        this.id = id;
+        for(let curItem of items){
+            this.grades.push(new GradeItem());
+        }
+    }
 }
 
 export class GradeItem{
+    // id: string;
+    // userGrade: number;
+    // userPredictedGrade: number;
+    // weight: number;
+    // userGoalEstimate: number;
+
     // Specific grade item that stores userGrade, userPredictedGrade, Weight, userGoalEstimate
-    constructor(
-        id: number,
-        name: string,
-        userGrade: number, 
-        userPredictedGrade: number,
-        weight: number,
-        userGoalEstimate: number,
-    ){}
+    // constructor(
+    //     id: number,
+    //     name: string,
+    //     userGrade: number, 
+    //     userPredictedGrade: number,
+    //     weight: number,
+    //     userGoalEstimate: number,
+    // ){}
 }
 
 

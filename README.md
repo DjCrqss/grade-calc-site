@@ -1,6 +1,17 @@
-# MyApp
-
+# MyApp (Grade Calculator Website)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+
+This is my project I have created while in the process of teaching myself how to use Angular to create progressive web apps.
+Users can add schooling years, semesters and courses on the main screen. Then you can rename them simply by clicking on the title.
+
+Just click on a course to enter where you can set your grade goal, and start adding grade entries to calculate you final score!
+
+## Upcoming features
+- Adding all your tests and assignments for the year + a grade goal will 'fill' the ones you haven't done yet to show what you must achieve to stay on track.
+- Selecting predict on a test/assignment will allow you to enter a predicted grade that will scale the unfilled ones as well if you're confident on what you will get!
+
+
+---------
 
 ## Development server
 
