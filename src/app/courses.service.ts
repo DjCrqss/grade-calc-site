@@ -169,6 +169,25 @@ export class CourseGroup{
             this.grades.push(new GradeItem());
         }
     }
+    // Add grade item
+    addGrade(){
+        this.grades.push(new GradeItem());
+    }
+    // Delete specific grade
+    deleteGrade(id:GradeItem){
+        if(this.grades.findIndex(x => x === id) >= 0){
+            this.grades.splice(this.grades.findIndex(x => x === id), 1);
+        }
+        console.log('Deleted grade');
+    }
+    // return course groups
+    getGrades(){
+        return this.grades;
+    }
+    // edit course name (self)
+    editGroup(value: string){
+        this.id = value;
+    }
 }
 
 export class GradeItem{

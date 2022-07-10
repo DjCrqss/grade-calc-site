@@ -15,11 +15,18 @@
             <h2>Grade goal: {{courseObj.gradeGoal}}</h2>
             <!-- Grade section -->
             <article id="grades">
-                <h3 (click)="addNewGroup()">Click me</h3>
                 <!-- Have for loop for groups -->
-                <h3 *ngFor="let curGroup of courseObj.groups">{{curGroup.id}}</h3>
+                <div *ngFor="let curGroup of courseObj.groups">
+                    <h3>{{curGroup.id}}</h3>
                     <!-- Have for loop for grade cards -->
-                <!-- stuff<hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P><hr>d<P></P> -->
+                    <div *ngFor="let curGrade of curGroup.grades">
+                        A grade entry.
+                    </div>
+                    <!-- Add new grade button -->
+                    <h5 (click)="curGroup.addGrade()">&lt;Add grade&gt;</h5> <!-- make this a method in the ts file instead and parse obj through so we can save -->
+                </div>
+                <!-- Add new group button -->
+                <h4 (click)="addNewGroup()">&lt;Add course group&gt;</h4>
             </article>
             <!-- Results section? -->
 

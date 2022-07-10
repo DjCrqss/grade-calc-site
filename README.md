@@ -9,6 +9,9 @@ Just click on a course to enter where you can set your grade goal, and start add
 ## Upcoming features
 - Adding all your tests and assignments for the year + a grade goal will 'fill' the ones you haven't done yet to show what you must achieve to stay on track.
 - Selecting predict on a test/assignment will allow you to enter a predicted grade that will scale the unfilled ones as well if you're confident on what you will get!
+- Filler images for the home screen and course screen if you have no added elements
+- Possibly minimising cards 
+- Make term/semester cards stored to scroll horizontally for less clutter and to be more in-line with material guidelines 
 
 
 ---------
