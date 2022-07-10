@@ -25,6 +25,7 @@ export class YearComponent {
     this.requestSaveYear.emit("Term deleted");
   }
 
+
   // Add new year
   addNewTerm(){
     this.yearObj.addTerm();

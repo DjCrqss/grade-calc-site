@@ -24,7 +24,7 @@ import { CourseComponent } from './years-list/year/term/course/course.component'
     AppRoutingModule,
     RouterModule.forRoot([
       {path: '', component: YearsListComponent},
-      {path: 'course/:courseID', component: CourseDetailsComponent}
+      // {path: 'course/:courseID', component: CourseDetailsComponent} USING SINGLE PAGE LAYOUT FOR NOW
     ])
   ],
   providers: [],
