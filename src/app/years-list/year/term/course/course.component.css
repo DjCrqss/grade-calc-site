@@ -89,7 +89,7 @@
     min-height: 80vh;
     border-radius: 1em;
     box-sizing: border-box;
-    padding: 1em;
+    padding: 1.5em;
 
     opacity: 0;
     animation: slide_in 0.5s 0.4s ease-out forwards;
@@ -140,6 +140,21 @@ h2{
     margin: 0.5em 0 !important;
     display: inline-block;
 }
+
+
+.group_card{
+    background-color: var(--col-two);
+    font-family: 'Gantari', sans-serif;
+    
+    margin-bottom: 1em;
+    padding: 1em;
+
+    border-radius: 1em;
+
+    position: relative;
+    
+}
+
 
 
 @keyframes slide_in{

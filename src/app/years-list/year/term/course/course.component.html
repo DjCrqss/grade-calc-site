@@ -23,8 +23,8 @@
 
             <!-- Grade section -->
             <article id="grades">
-                <!-- Have for loop for groups -->
-                <div *ngFor="let curGroup of courseObj.groups">
+                <!-- Have for loop for group cards-->
+                <div class="group_card deletable_card_false" *ngFor="let curGroup of courseObj.groups">
                     <div class="title_container">
                         <!-- <h2 contenteditable="true" #x (keydown.enter)="editYear(x.innerText);" (keyup.enter)="x.innerText = yearObj.id; x.blur()" >{{yearObj.id}}</h2> -->
                         <h3 contenteditable="true" #z 
