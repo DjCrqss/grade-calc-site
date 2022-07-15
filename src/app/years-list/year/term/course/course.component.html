@@ -36,9 +36,16 @@
 
                     
                     <!-- Have for loop for grade cards -->
-                    <div *ngFor="let curGrade of curGroup.grades">
-                        A grade entry.
-                    </div>
+                    <table class="grade_card" *ngFor="let curGrade of curGroup.grades">
+                        <tr>
+                            <td>Grade Title</td>
+                            <td>Weight</td>
+                        </tr>
+                        <tr>
+                            <td>Progress bar</td>
+                            <td>Mark</td>
+                        </tr>
+                    </table>
 
                     <!-- Add new grade button -->
                     <h5 (click)="curGroup.addGrade()">&lt;Add grade&gt;</h5> <!-- make this a method in the ts file instead and parse obj through so we can save -->
