@@ -171,6 +171,8 @@ h2{
     
     margin-bottom: 1em;
     border-radius: 1em;
+
+    position: relative;
 }
 
 .grade_card td{

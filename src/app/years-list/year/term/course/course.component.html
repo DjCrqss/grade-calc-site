@@ -25,6 +25,7 @@
             <article id="grades">
                 <!-- Have for loop for group cards-->
                 <div class="group_card deletable_card_false" *ngFor="let curGroup of courseObj.groups">
+
                     <div class="title_container">
                         <!-- <h2 contenteditable="true" #x (keydown.enter)="editYear(x.innerText);" (keyup.enter)="x.innerText = yearObj.id; x.blur()" >{{yearObj.id}}</h2> -->
                         <h3 contenteditable="true" #z 
@@ -47,10 +48,16 @@
                             <td>Progress bar</td>
                             <td>Mark</td>
                         </tr>
+                        <i class="material-icons close_btn" (click)="deleteGrade(curGroup, curGrade)">close</i>
+                        
                     </table>
 
                     <!-- Add new grade button -->
-                    <h5 (click)="curGroup.addGrade()">&lt;Add grade&gt;</h5> <!-- make this a method in the ts file instead and parse obj through so we can save -->
+                    <h5 (click)="addNewGrade(curGroup)">&lt;Add grade&gt;</h5> <!-- make this a method in the ts file instead and parse obj through so we can save -->
+                
+                
+                    <!-- Delete group button -->
+                    <i class="material-icons close_btn" (click)="deleteGroup(curGroup)">close</i>
                 </div>
 
                 <!-- Add new group button -->
