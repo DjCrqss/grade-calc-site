@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { CourseGroup, SchoolCourse } from 'src/app/courses.service';
+import { CourseGroup, GradeItem, SchoolCourse } from 'src/app/courses.service';
 
 @Component({
   selector: 'app-course',
@@ -11,6 +11,7 @@ import { CourseGroup, SchoolCourse } from 'src/app/courses.service';
 
 export class CourseComponent {
   @Input() courseObj!: SchoolCourse; //| undefined
+  @Input() isEditing3!: boolean;
   @Output() requestSaveCourse = new EventEmitter<string>();
 
   items: CourseGroup[] = []; // Appears in the popup window
@@ -19,17 +20,6 @@ export class CourseComponent {
    this.items = this.courseObj.getGroups();
   }
 
-  deleteGroup(id:CourseGroup){
-   this.courseObj.deleteGroup(id);
-   this.requestSaveCourse.emit("Group deleted");
-  }
-
-  // Add new year
-  addNewGroup(){
-   this.courseObj.addGroup();
-   this.requestSaveCourse.emit("Group added");
-  }
- 
   editCourse(id:string){
    // remove newlines
    id = id.replace(/\r?\n|\r/g, "").trim();
@@ -51,6 +41,19 @@ export class CourseComponent {
     }
   }
 
+  toggleEdit(){
+    this.isEditing3 = !this.isEditing3;
+  }
+
+  requestSaveGroup(content: string){
+    this.requestSaveCourse.emit(content);
+  }
+
+  // GROUPS
+  addNewGroup(){
+    this.courseObj.addGroup();
+    this.requestSaveCourse.emit("Group added");
+  }
   editGroup(id:CourseGroup, value:string){
     // remove newlines
     value = value.replace(/\r?\n|\r/g, "").trim();
@@ -60,8 +63,22 @@ export class CourseComponent {
       this.requestSaveCourse.emit("Group edited");
     }
   }
+  deleteGroup(id:CourseGroup){
+    this.courseObj.deleteGroup(id);
+    this.requestSaveCourse.emit("Group deleted");
+   }
 
-  requestSaveGroup(content: string){
-    this.requestSaveCourse.emit(content);
-  }
+   // GRADES
+   addNewGrade(id:CourseGroup){
+    id.addGrade();
+    this.requestSaveCourse.emit("Grade added");
+   }
+   
+   deleteGrade(parent:CourseGroup, id:GradeItem ){
+    parent.deleteGrade(id);
+    this.requestSaveCourse.emit("Grade deleted");
+   }
+
+
+  
 }

@@ -130,6 +130,25 @@ export class SchoolCourse{
             this.groups.push(new CourseGroup(curItem['id'], curItem['grades']));
         }
     }
+
+     // edit course name
+     editCourse(value: string){
+        this.id = value;
+        this.needsName = this.id == "New course" ? true : false;
+    }
+
+    editGoal(value: number){
+        this.gradeGoal = value;
+    }
+
+    // toggle open status
+    toggleOpen(){
+        this.isOpen = !this.isOpen;
+        // toggle isediting?
+    }
+
+
+    // GROUPS
     // Add course group
     addGroup(){
         this.groups.push(new CourseGroup("New group", []));
@@ -145,22 +164,6 @@ export class SchoolCourse{
     getGroups(){
         return this.groups;
     }
-    // edit course name (self)
-    editCourse(value: string){
-        this.id = value;
-        this.needsName = this.id == "New course" ? true : false;
-    }
-
-    editGoal(value: number){
-        this.gradeGoal = value;
-    }
-
-    // toggle open status
-    toggleOpen(){
-        this.isOpen = !this.isOpen;
-    }
-
-    // GROUPS
     editGroup(id:CourseGroup, value:string){
         // find group with specific name
         if(this.groups.findIndex(x => x === id) >= 0){

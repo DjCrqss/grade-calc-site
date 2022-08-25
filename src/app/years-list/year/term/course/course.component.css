@@ -167,12 +167,17 @@ h2{
 /* Course table */
 .grade_card{
     background-color: var(--col-three);
-    width: 100%;
-    
     margin-bottom: 1em;
     border-radius: 1em;
+   
+
+    position: relative;
 }
 
-.grade_card td{
+.grade_card table{
+    width: 100%;
+}
+
+.grade_card table td{
     padding: 1em;
 }
