@@ -173,6 +173,11 @@ export class SchoolCourse{
 
 
     // GRADES
+    addGrade(groupID:CourseGroup){
+        if(this.groups.findIndex(x => x === groupID) >= 0){
+            this.groups[this.groups.findIndex(x => x === groupID)].addGrade();
+        }
+    }
 
 }
 
