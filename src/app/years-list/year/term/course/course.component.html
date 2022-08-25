@@ -68,6 +68,8 @@
             <div id="results_container">
                 <h2>Current grade: xx</h2>
             </div>
+
+            
             <!-- Close button -->
             <span id="close_win_btn" (click)="$event.stopPropagation(); courseObj.toggleOpen(); isEditing3 = false; requestSaveGroup('Toggled close')">Return</span>
             <i class="material-icons delete_toggle" (click)="toggleEdit()">delete</i>

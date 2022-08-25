@@ -45,8 +45,10 @@ export class CourseComponent {
     this.isEditing3 = !this.isEditing3;
   }
 
+  // request saving whenever data is upated
   requestSaveGroup(content: string){
     this.requestSaveCourse.emit(content);
+    
   }
 
   // GROUPS
@@ -78,6 +80,11 @@ export class CourseComponent {
     parent.deleteGrade(id);
     this.requestSaveCourse.emit("Grade deleted");
    }
+
+   // calculations
+  //  calculateAverage(){
+  //   this.courseObj.setGradeAverage(100);
+  //  }
 
 
   
