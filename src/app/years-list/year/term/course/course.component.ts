@@ -1,3 +1,4 @@
+import { visitAll } from '@angular/compiler';
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { CourseGroup, GradeItem, SchoolCourse } from 'src/app/courses.service';
 
@@ -75,6 +76,34 @@ export class CourseComponent {
     id.addGrade();
     this.requestSaveCourse.emit("Grade added");
    }
+
+   editGrade(id:GradeItem, value:string){
+    // remove newlines
+    value = value.replace(/\r?\n|\r/g, "").trim();
+    // check length then edit year if good
+    if(value.length > 0){
+      id.editGrade(value);
+      this.requestSaveCourse.emit("Grade edited");
+    }
+  }
+
+  editWeight(id:GradeItem, value:string){
+    var v = parseFloat(value);
+    if(v>100) v=100;
+    if(v<0) v=0;
+    id.editWeight(v);
+    this.requestSaveCourse.emit("Weight edited");
+
+  }
+
+  editMark(id:GradeItem, value:string){
+    var v = parseFloat(value);
+    if(v>100) v=100;
+    if(v<0) v=0;
+    id.editMark(v);
+    this.requestSaveCourse.emit("Mark edited");
+
+  }
    
    deleteGrade(parent:CourseGroup, id:GradeItem ){
     parent.deleteGrade(id);

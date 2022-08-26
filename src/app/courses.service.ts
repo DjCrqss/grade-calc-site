@@ -190,12 +190,12 @@ export class CourseGroup{
     constructor( id: string, items:[]){
         this.id = id;
         for(let curItem of items){
-            this.grades.push(new GradeItem());
+            this.grades.push(new GradeItem(curItem['id'], curItem['userGrade'], curItem['weight'], curItem['estimatedGrade'],  curItem['isGradePredicted']));
         }
     }
     // Add grade item
     addGrade(){
-        this.grades.push(new GradeItem());
+        this.grades.push(new GradeItem("New grade", 0, 0, 0, false));
     }
     // Delete specific grade
     deleteGrade(id:GradeItem){
@@ -217,21 +217,39 @@ export class CourseGroup{
 }
 
 export class GradeItem{
-    // id: string;
-    // userGrade: number;
-    // userPredictedGrade: number;
-    // weight: number;
-    // userGoalEstimate: number;
+    id: string;
+    userGrade: number;
+    weight: number;
+    estimatedGrade: number;
+    isGradePredicted: boolean;
 
-    // Specific grade item that stores userGrade, userPredictedGrade, Weight, userGoalEstimate
-    // constructor(
-    //     id: number,
-    //     name: string,
-    //     userGrade: number, 
-    //     userPredictedGrade: number,
-    //     weight: number,
-    //     userGoalEstimate: number,
-    // ){}
+    //Specific grade item that stores userGrade, userPredictedGrade, Weight, userGoalEstimate
+    constructor(
+        id: string,
+        userGrade: number, 
+        weight: number,
+        estimatedGrade: number,
+        isGradePredicted: boolean
+    ){
+        this.id = id;
+        this.userGrade = userGrade;
+        this.weight = weight;   
+        this.estimatedGrade = estimatedGrade;
+        this.isGradePredicted = isGradePredicted;
+    }
+
+    editGrade(value:string){
+        this.id = value;
+    }
+
+    editMark(value:number){
+        this.userGrade = value;
+    }
+
+    editWeight(value:number){
+        this.weight = value;
+    }
+
 }
 
 

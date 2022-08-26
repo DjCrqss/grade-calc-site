@@ -164,13 +164,13 @@ h2{
 }
 
 
-/* Course table */
+/* Course grades table */
 .grade_card{
     background-color: var(--col-three);
     margin-bottom: 1em;
     border-radius: 1em;
-   
-
+    padding: 1em;
+    box-sizing: border-box;
     position: relative;
 }
 
@@ -179,5 +179,43 @@ h2{
 }
 
 .grade_card table td{
-    padding: 1em;
+    padding: 0.5rem;
+}
+
+.gradeTitle{
+    font-size: 2em;
+}
+
+
+input{
+    background-color: var(--col-three);
+    border: none;
+    width: 2.5em;
+    font-size: 2em;
+    font-family: inherit;
+    color: var(--text-col);
+}
+input:focus{
+    outline: none;
+}
+
+td:nth-child(even){
+    text-align: right;
+    width: 45%
+}
+
+.progress_bar_container{
+    /* width: 90%; */
+    margin: 0 auto;
+    background-color: var(--col-four);
+    border-radius: 1em;
+    overflow: hidden
+}
+.progress_bar{
+    height: 1.5em;
+    background-color: var(--bar-col);
+    border-radius: inherit;
+    width: 0%;
+    transition: 1s;
+    min-width: 1.5em;
 }
