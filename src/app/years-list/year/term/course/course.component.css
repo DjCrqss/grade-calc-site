@@ -184,6 +184,7 @@ h2{
 
 .gradeTitle{
     font-size: 2em;
+    word-break: break-all;
 }
 
 
@@ -218,4 +219,23 @@ td:nth-child(even){
     width: 0%;
     transition: 1s;
     min-width: 1.5em;
+}
+
+@media screen and (max-width: 520px){ /* Large-Mobile */
+	.gradeTitle{
+        font-weight: bold;
+    }
+    input{
+        text-align: right;
+        font-weight: bold;
+    }
+
+    td:nth-child(even){
+        text-align: right;
+        width: 35%
+    }
+    .grade_card{
+        font-size: 0.75em;
+        padding: 0.5em;
+    }
 }
