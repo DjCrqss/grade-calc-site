@@ -25,6 +25,7 @@ export class CoursesService{
             }
             
         }
+        document.body.setAttribute('colour-theme', 'dark');
     }
     // Adds a new year object
     addYear(){

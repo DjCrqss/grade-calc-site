@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { CoursesService, SchoolYear } from '../courses.service';
 
 
@@ -15,7 +14,7 @@ export class YearsListComponent{
   CoursesObj:CoursesService; 
   
   // constructor for original object
-  constructor(private route: ActivatedRoute, private cs: CoursesService) {
+  constructor(private cs: CoursesService) {
     // console.log("Root contents: " + this.items);
     this.CoursesObj = cs;
   }

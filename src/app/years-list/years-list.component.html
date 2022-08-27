@@ -5,7 +5,8 @@
     <i *ngIf="this.CoursesObj.isEditing" class="material-icons close_btn" (click)="deleteYear(curYear)">close</i>
 </table>
 <!-- 'Add year' button -->
-<div id="fab_btn" (click)="addNewYear()">+</div>
+<!-- <div id="fab_btn" (click)="addNewYear()">+</div> -->
+<i class="material-icons" id="fab_btn" (click)="addNewYear()">add</i>
 <i class="material-icons delete_toggle" (click)="toggleEdit()">delete</i>
 <!-- <div id="fab_btn" (click)="toggleEdit()">+</div> -->
 

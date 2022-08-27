@@ -38,25 +38,25 @@
     -webkit-backdrop-filter: blur(12px);
 }
 
-
 #close_win_btn{
     background-color: #8cc69a;
     box-shadow: 1px 6px 12px 2px #61b57588;
-    font-size: 1.5em;
-    padding: 0.5em 1em;
-
-    font-family: 'Gantari', sans-serif;
-    color: #FFF;
+    font-size: 1.25em;
+    color: var(--col-one);
+    min-width: 4rem;
+    line-height: 4rem;
+    height: 4rem;
+    box-sizing: border-box;
+    padding: 0 3rem;
     text-align: center;
-    border-radius: 2em;
+    border-radius: 2rem;
     user-select: none;
 
     position: fixed;
-    bottom: 1em;
-    right: 1em;
+    bottom: 2rem;
+    right: 2rem;
 
     cursor: pointer;
-
 }
 
 

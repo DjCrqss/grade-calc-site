@@ -10,7 +10,7 @@ body{
 }
 
 
-:root{
+html{
 	--text-col: #333;   /* Use transparency for lighter versions */
 	--col-one: #FFFFFF;
     --col-two: #F0F0F0;
@@ -22,10 +22,19 @@ body{
     /* use colour 4 for the unset ones */
 }
 
+[colour-theme = "dark"]{
+	--text-col: #f9f9f9;   /* Use transparency for lighter versions */
+	--col-one: #202020;
+    --col-two: #353535;
+    --col-three: #3d3d3d; 
+    --col-four: #4a4a4a;
+    --bar-col: #677B69;
+    --pred-bar-col: #987A59;
+}
+
 
 ::-webkit-scrollbar{
     background-color: #ccc;
-   
     width: max(5px, min(0.75vw, 10px));
 }
 

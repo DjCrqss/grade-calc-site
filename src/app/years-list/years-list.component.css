@@ -25,12 +25,12 @@
 #fab_btn{
     background-color: #8CC6C6;
     box-shadow: 1px 6px 12px 2px #61b5aa88;
-
-    font-family: 'Gantari', sans-serif;
     font-size: 2em;
-    color: #FFF;
-    min-width: 2em;
-    line-height: 2em;
+    color: var(--col-one);
+    width: 4rem;
+    line-height: 4rem;
+    height: 4rem;
+    box-sizing: border-box;
     text-align: center;
     border-radius: 1em;
     user-select: none;
@@ -46,7 +46,7 @@
     background-color: #8CC6C6;
     box-shadow: 1px 6px 12px 2px #61b5aa88;
     font-size: 1.25em;
-    color: #FFF;
+    color: var(--col-one);
     width: 2em;
     line-height: 2em;
     text-align: center;
