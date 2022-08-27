@@ -1,7 +1,12 @@
 .fixed_edit_btn{
     opacity: 0.45;
-    font-size: 1em;
+    font-size: 1.25em;
     animation: fade 1s ease-in-out infinite alternate;
+    position: absolute;
+    /* top: 1em; */
+    line-height: 1.5em;
+    /* top:auto;bottom: auto; */
+    right: 1.25em;
 }
 
 
@@ -11,10 +16,6 @@
     animation: fade 1s ease-in-out infinite alternate;
 }
 
-
-.centered_content{
-    margin: 0 auto;
-}
 
 @keyframes fade {
     from{opacity: 0.2;}
@@ -187,20 +188,50 @@ h2{
 }
 
 form{
-    display: inline-block;
+    /* display: inline-block; */
+    /* width: 80%; */
+    margin: 0 auto;
 }
+
 input{
+    background-color: transparent;
+    color: var(--text-col);
+    font-family: inherit;
+    font-size: 1.25em;
+    text-align: center;
+    border: 0;
+    /* width: 50%; */
+    box-sizing: border-box;
+    cursor: pointer;
+    min-width: 0;
+    width: 100%;
+    line-height: 1.5em;
+}
+
+.number_input{
     background-color: var(--col-three);
     border: none;
-    width: 2.5em;
+    width: 3em;
     font-size: 2em;
+    line-height: 1em;
     font-family: inherit;
-    color: var(--text-col);
-    text-align: left;
+    text-align: right;
     margin-left: 0.5em;
+
+    cursor: text;
 }
 input:focus{
     outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
 
 td:nth-child(even){
@@ -228,7 +259,7 @@ td:nth-child(even){
 	.gradeTitle{
         font-weight: bold;
     }
-    input{
+    .number_input{
         text-align: right;
         font-weight: bold;
     }

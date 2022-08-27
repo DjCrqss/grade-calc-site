@@ -45,7 +45,7 @@ export class CoursesService{
     }
     // Adds a new year object
     addYear(){
-        this.years.push(new SchoolYear("New year", []));
+        this.years.push(new SchoolYear("", []));
     }
     // Deletes a selected year
     deleteYear(id:SchoolYear){
@@ -79,7 +79,7 @@ export class SchoolYear{
     }
     // adds a new term/semester
     addTerm(){
-        this.terms.push(new SchoolTerm('New term', []));
+        this.terms.push(new SchoolTerm('', []));
     }
     // deletes a selected term
     deleteTerm(id:SchoolTerm){
@@ -111,7 +111,7 @@ export class SchoolTerm{
     }
     //  adds a new course
     addCourse(){
-        let course = new SchoolCourse("New course", 0, false, [])
+        let course = new SchoolCourse("", 0, false, [])
         course.addDefault();
         this.courses.push(course);
     }
@@ -144,7 +144,7 @@ export class SchoolCourse{
         this.id = id;
         this.isOpen = isOpen;
         this.gradeGoal = gradeGoal;
-        this.needsName = this.id == "New course" ? true : false;
+        this.needsName = this.id == "" ? true : false;
         for(let curItem of items){
             this.groups.push(new CourseGroup(curItem['id'], curItem['grades']));
         }
@@ -159,7 +159,7 @@ export class SchoolCourse{
     // edit course name
     editCourse(value: string){
         this.id = value;
-        this.needsName = this.id == "New course" ? true : false;
+        this.needsName = this.id == "" ? true : false;
     }
 
     editGoal(value: number){

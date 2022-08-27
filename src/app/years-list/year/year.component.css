@@ -12,6 +12,26 @@
     
 }
 
+form{
+    max-width: 85vw;
+    display: inline-block;
+}
+input{
+    font-size: 2em;
+    margin: 0 0.2em 0.5em 0;
+    display: inline-block;
+    max-width: 75%;
+    background: transparent;
+    color: var(--text-col);
+    border: 0;
+    font-weight: bold;
+    font-family: 'Gantari', sans-serif;
+    outline: none;
+}
+
+    
+
+
 @media screen and (max-width: 520px){ /* Large-Mobile */
 	.term_card{
         padding: 1em 0.75em;

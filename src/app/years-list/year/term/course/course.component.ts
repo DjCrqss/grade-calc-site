@@ -22,6 +22,7 @@ export class CourseComponent {
   }
 
   editCourse(id:string){
+    console.log("TEST");
    // remove newlines
    id = id.replace(/\r?\n|\r/g, "").trim();
    // check length then edit year if good

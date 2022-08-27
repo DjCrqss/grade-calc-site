@@ -12,10 +12,29 @@
     position: relative;
     display: inline-block;
     margin-right: 1em;
+    box-sizing: border-box;
 }
 
 .hover_false{
     cursor: pointer;
+}
+
+form{
+    max-width: 75vw;
+    display: block;
+}
+
+input{
+    font-size: 1.5em;
+    margin: 0 0.2em 0.5em 0;
+    display: inline-block;
+    max-width: 75%;
+    background: transparent;
+    color: var(--text-col);
+    border: 0;
+    font-weight: bold;
+    font-family: 'Gantari', sans-serif;
+    outline: none;
 }
 
 @media screen and (max-width: 480px){ /* Large-Mobile */

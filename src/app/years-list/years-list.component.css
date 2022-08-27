@@ -87,13 +87,6 @@
 }
 
 
-
-
-.title_container{
-    display: block;
-    cursor: pointer;
-    width: fit-content;
-}
 .edit_btn{
     visibility: hidden;
     opacity: 0.25;
