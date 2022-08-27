@@ -33,16 +33,16 @@
 
 
     cursor: default;
-    background-color: #55555566;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--blur-col);
+    backdrop-filter: blur(12px) grayscale(50%);
+    -webkit-backdrop-filter: blur(12px) grayscale(50%);
 }
 
 #close_win_btn{
-    background-color: #8cc69a;
+    background-color: #659470;
     /* box-shadow: 1px 6px 12px 2px #61b57588; */
     font-size: 1.25em;
-    color: var(--col-one);
+    color: #d4f3dc;
     min-width: 4rem;
     line-height: 4rem;
     height: 4rem;
@@ -108,7 +108,7 @@
     padding: 1.5em;
     border-radius: 18px;
     margin: 1em 0;
-    margin-bottom: calc(1em + 75px);
+    margin-bottom: calc(2em + 150px);
 
     opacity: 0;
     animation: slide_in 0.5s 0.5s ease-out forwards;
@@ -186,7 +186,9 @@ h2{
     word-break: break-all;
 }
 
-
+form{
+    display: inline-block;
+}
 input{
     background-color: var(--col-three);
     border: none;
@@ -194,6 +196,8 @@ input{
     font-size: 2em;
     font-family: inherit;
     color: var(--text-col);
+    text-align: left;
+    margin-left: 0.5em;
 }
 input:focus{
     outline: none;

@@ -30,4 +30,4 @@ import { CourseComponent } from './years-list/year/term/course/course.component'
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

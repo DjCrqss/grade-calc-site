@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { PlatformLocation } from '@angular/common'
 @Injectable({
     providedIn: 'root'
 })
@@ -8,10 +9,9 @@ import { HttpClient } from '@angular/common/http';
 // ROOT ELEMENT THAT STORES THE TREE
 export class CoursesService{
     years: SchoolYear[] = [];
-    items:[] = [];
     isEditing:boolean = false;
     // Constructor
-    constructor(){
+    constructor(location: PlatformLocation){
         console.log("LocalStorage data: ");
         console.log(JSON.parse(localStorage.getItem("yearsList") || '{}'));
         console.log("=============")
@@ -19,13 +19,29 @@ export class CoursesService{
         if(localStorage.getItem("yearsList") === null){
             this.years.push(new SchoolYear('2022', []));
         } else {
-            this.items = JSON.parse(localStorage.getItem("yearsList") || '{}');
-            for(let curItem of this.items){  // cur item should be a year obj but is a JSON object
+            let items = JSON.parse(localStorage.getItem("yearsList") || '{}');
+            for(let curItem of items){  // cur item should be a year obj but is a JSON object
                 this.years.push(new SchoolYear(curItem['id'], curItem['terms']))
             }
             
         }
+        // choose theme
         document.body.setAttribute('colour-theme', 'dark');
+
+        // intercept back
+        history.pushState(null, "", window.location.href);  
+        location.onPopState(() => {
+            history.pushState(null, "", window.location.href);
+            // return to home
+            for(let curYear of this.years){
+                for(let curTerm of curYear.terms){
+                    for(let curCourse  of curTerm.courses){
+                        curCourse.isOpen = false;
+                    }
+                }
+            }
+            console.log("Went back");
+        }); 
     }
     // Adds a new year object
     addYear(){

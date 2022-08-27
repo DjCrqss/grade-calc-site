@@ -8,15 +8,16 @@ import { CoursesService, SchoolYear } from '../courses.service';
   styleUrls: ['./years-list.component.css']
 })
 
+
 export class YearsListComponent{
   // Retrieve values
   items = this.cs.getYears();
   CoursesObj:CoursesService; 
-  
+
   // constructor for original object
   constructor(private cs: CoursesService) {
     // console.log("Root contents: " + this.items);
-    this.CoursesObj = cs;
+    this.CoursesObj = cs; 
   }
 
   deleteYear(id:SchoolYear){

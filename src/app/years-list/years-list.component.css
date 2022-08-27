@@ -23,10 +23,10 @@
 
 /* Buttons */
 #fab_btn{
-    background-color: #8CC6C6;
+    background-color: var(--accent-col);
     /* box-shadow: 1px 6px 12px 2px #61b5aa88; */
     font-size: 2em;
-    color: var(--col-one);
+    color: var(--accent-light-col);
     width: 4rem;
     line-height: 4rem;
     height: 4rem;
@@ -43,10 +43,10 @@
 }
 
 .delete_toggle{
-    background-color: #8CC6C6;
+    background-color: var(--accent-col);
     /* box-shadow: 1px 6px 12px 2px #61b5aa88; */
     font-size: 1.25em;
-    color: var(--col-one);
+    color: var(--accent-light-col);
     width: 2em;
     line-height: 2em;
     text-align: center;
@@ -106,8 +106,8 @@
 .add_btn{
     display: table;
     cursor: pointer;
-    background-color: #8CC6C6;
-    color: #deffff;
+    background-color: var(--accent-col);
+    color: var(--accent-light-col);
     
     border-radius: 5em;
     padding: 0.7em;
