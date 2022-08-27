@@ -24,7 +24,7 @@
 /* Buttons */
 #fab_btn{
     background-color: #8CC6C6;
-    box-shadow: 1px 6px 12px 2px #61b5aa88;
+    /* box-shadow: 1px 6px 12px 2px #61b5aa88; */
     font-size: 2em;
     color: var(--col-one);
     width: 4rem;
@@ -44,7 +44,7 @@
 
 .delete_toggle{
     background-color: #8CC6C6;
-    box-shadow: 1px 6px 12px 2px #61b5aa88;
+    /* box-shadow: 1px 6px 12px 2px #61b5aa88; */
     font-size: 1.25em;
     color: var(--col-one);
     width: 2em;

@@ -37,41 +37,44 @@
                     
                     <!-- Have for loop for grade cards -->
                     <div class="grade_card deletable_card_{{isEditing3}}" *ngFor="let curGrade of curGroup.grades" [ngStyle]="{'opacity': 70 + curGrade.weight + '%'}">
-                    <table  >
-                        <tr>
-                            <!-- Editable title and weight values -->
-                            <td class="gradeTitle" contenteditable="true" #grade 
-                        (keydown.enter)="editGrade(curGrade, grade.innerText); grade.blur(); grade.textContent = curGrade.id" 
-                        (blur)="editGrade(curGrade, grade.innerText); grade.textContent = curGrade.id;" >{{curGrade.id}}
-                            </td>
-                            <td>Weight (%) <form><input #weight type="number" min="0" max="100" value="{{curGrade.weight}}"
-                                (change)="editWeight(curGrade, weight.value); weight.value = ''+curGrade.weight; weight.blur()"
-                                (keydown.enter)="weight.blur()"></form></td>
-                        </tr>
-                        <tr>
-                            <!-- Progress bar and editible mark values -->
-                            <td>
-                                <div class="progress_bar_container">
-                                    <div class="progress_bar" [ngStyle]="{'width': curGrade.userGrade + '%'}"></div>
-                                </div>
-                            </td>
-                            <td>Mark (%) <form><input #mark type="number" min="0" max="100" value="{{curGrade.userGrade}}"
-                                (change)="editMark(curGrade, mark.value); mark.value = ''+curGrade.userGrade; mark.blur()"
-                                (keydown.enter)="mark.blur()"></form></td>
-                        </tr>
-                        
-                    </table>
-                    <i *ngIf="isEditing3" class="material-icons close_btn" (click)="deleteGrade(curGroup, curGrade)">close</i></div>
+                        <table  >
+                            <tr>
+                                <!-- Editable title and weight values -->
+                                <td class="gradeTitle" contenteditable="true" #grade 
+                            (keydown.enter)="editGrade(curGrade, grade.innerText); grade.blur(); grade.textContent = curGrade.id" 
+                            (blur)="editGrade(curGrade, grade.innerText); grade.textContent = curGrade.id;" >{{curGrade.id}}
+                                </td>
+                                <td>Weight (%) <form><input #weight type="number" min="0" max="100" value="{{curGrade.weight}}"
+                                    (change)="editWeight(curGrade, weight.value); weight.value = ''+curGrade.weight; weight.blur()"
+                                    (keydown.enter)="weight.blur()"></form></td>
+                            </tr>
+                            <tr>
+                                <!-- Progress bar and editible mark values -->
+                                <td>
+                                    <div class="progress_bar_container">
+                                        <div class="progress_bar" [ngStyle]="{'width': curGrade.userGrade + '%'}"></div>
+                                    </div>
+                                </td>
+                                <td>Mark (%) <form><input #mark type="number" min="0" max="100" value="{{curGrade.userGrade}}"
+                                    (change)="editMark(curGrade, mark.value); mark.value = ''+curGrade.userGrade; mark.blur()"
+                                    (keydown.enter)="mark.blur()"></form></td>
+                            </tr>
+                            
+                        </table>
+                        <i *ngIf="isEditing3" class="material-icons close_btn" (click)="deleteGrade(curGroup, curGrade)">close</i>
+                    </div>
 
 
                     <!-- Add new grade button -->
-                    <h5 (click)="addNewGrade(curGroup)">&lt;Add grade&gt;</h5>
+                    <!-- <h5 (click)="addNewGrade(curGroup)">&lt;Add grade&gt;</h5> -->
+                    <span class="add_btn" (click)="addNewGrade(curGroup)">Add grade</span>
                     <!-- Delete coruse group button -->
                     <i *ngIf="isEditing3" class="material-icons close_btn" (click)="deleteGroup(curGroup)">close</i>
                 </div>
 
                 <!-- Add new group button -->
-                <h4 (click)="addNewGroup()">&lt;Add course group&gt;</h4>
+                <!-- <h4 (click)="addNewGroup()">&lt;Add course group&gt;</h4> -->
+                <span class="add_btn" (click)="addNewGroup()">Add group</span>
             </article>
 
 

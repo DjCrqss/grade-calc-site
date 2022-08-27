@@ -40,14 +40,14 @@
 
 #close_win_btn{
     background-color: #8cc69a;
-    box-shadow: 1px 6px 12px 2px #61b57588;
+    /* box-shadow: 1px 6px 12px 2px #61b57588; */
     font-size: 1.25em;
     color: var(--col-one);
     min-width: 4rem;
     line-height: 4rem;
     height: 4rem;
     box-sizing: border-box;
-    padding: 0 3rem;
+    padding: 0 2rem;
     text-align: center;
     border-radius: 2rem;
     user-select: none;
