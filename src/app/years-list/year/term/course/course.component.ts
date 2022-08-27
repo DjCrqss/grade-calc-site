@@ -111,9 +111,32 @@ export class CourseComponent {
    }
 
    // calculations
-  //  calculateAverage(){
-  //   this.courseObj.setGradeAverage(100);
-  //  }
+
+  totalWeights(){
+      var weight = 0;
+      for(let group of this.courseObj.getGroups()){
+        for(let grade of group.getGrades()){
+          weight += grade.getWeight();
+        }
+      }
+      return weight;
+  }
+
+  totalScores(){
+    var score = 0;
+    for(let group of this.courseObj.getGroups()){
+      for(let grade of group.getGrades()){
+        score += grade.getMark() * (grade.getWeight()/100);
+      }
+    }
+    return score;
+  }
+
+  calculateAverage(){
+    return (this.totalScores() / this.totalWeights())*100;
+  }
+
+
 
 
   

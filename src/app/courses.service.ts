@@ -94,7 +94,9 @@ export class SchoolTerm{
     }
     //  adds a new course
     addCourse(){
-        this.courses.push(new SchoolCourse("New course", 0, false, []));
+        let course = new SchoolCourse("New course", 0, false, [])
+        course.addDefault();
+        this.courses.push(course);
     }
     //  deletes a selected course
     deleteCourse(id:SchoolCourse){
@@ -131,8 +133,14 @@ export class SchoolCourse{
         }
     }
 
-     // edit course name
-     editCourse(value: string){
+    addDefault(){
+        this.gradeGoal = 90;
+        this.groups.push(new CourseGroup("Assignments", []));
+        this.groups.push(new CourseGroup("Exams", []));
+    }
+
+    // edit course name
+    editCourse(value: string){
         this.id = value;
         this.needsName = this.id == "New course" ? true : false;
     }
@@ -144,7 +152,6 @@ export class SchoolCourse{
     // toggle open status
     toggleOpen(){
         this.isOpen = !this.isOpen;
-        // toggle isediting?
     }
 
 
@@ -248,6 +255,14 @@ export class GradeItem{
 
     editWeight(value:number){
         this.weight = value;
+    }
+
+    getWeight(){
+        return this.weight;
+    }
+
+    getMark(){
+        return this.userGrade;
     }
 
 }

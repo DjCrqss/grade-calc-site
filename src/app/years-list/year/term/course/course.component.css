@@ -97,7 +97,7 @@
     padding: 0.5em;
     border-radius: 18px;
     margin: 1em 0;
-    padding: 1em;
+    padding: 1.5em;
 
     opacity: 0;
     animation: slide_in 0.5s 0.2s ease-out forwards;
@@ -105,10 +105,9 @@
 
 #results_container{
     background-color: var(--col-one);
-    padding: 0.5em;
+    padding: 1.5em;
     border-radius: 18px;
     margin: 1em 0;
-    padding: 1em;
     margin-bottom: calc(1em + 75px);
 
     opacity: 0;

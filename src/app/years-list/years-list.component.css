@@ -140,6 +140,14 @@
     word-wrap: break-word;
 }
 
+/* Text styles */
+.error_msg{
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color:#dd9c9c;
+}
+
 [contenteditable] {
     outline: 0px solid transparent;
   }

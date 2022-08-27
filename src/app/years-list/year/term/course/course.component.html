@@ -36,7 +36,7 @@
 
                     
                     <!-- Have for loop for grade cards -->
-                    <div class="grade_card deletable_card_{{isEditing3}}" *ngFor="let curGrade of curGroup.grades">
+                    <div class="grade_card deletable_card_{{isEditing3}}" *ngFor="let curGrade of curGroup.grades" [ngStyle]="{'opacity': 70 + curGrade.weight + '%'}">
                     <table  >
                         <tr>
                             <!-- Editable title and weight values -->
@@ -44,7 +44,9 @@
                         (keydown.enter)="editGrade(curGrade, grade.innerText); grade.blur(); grade.textContent = curGrade.id" 
                         (blur)="editGrade(curGrade, grade.innerText); grade.textContent = curGrade.id;" >{{curGrade.id}}
                             </td>
-                            <td>Weight (%) <input #weight type="number" min="0" max="100" value="{{curGrade.weight}}" (change)="editWeight(curGrade, weight.value); weight.value = ''+curGrade.weight; weight.blur()"></td>
+                            <td>Weight (%) <input #weight type="number" min="0" max="100" value="{{curGrade.weight}}"
+                                (change)="editWeight(curGrade, weight.value); weight.value = ''+curGrade.weight; weight.blur()"
+                                (keydown.enter)="weight.blur()"></td>
                         </tr>
                         <tr>
                             <!-- Progress bar and editible mark values -->
@@ -53,7 +55,9 @@
                                     <div class="progress_bar" [ngStyle]="{'width': curGrade.userGrade + '%'}"></div>
                                 </div>
                             </td>
-                            <td>Mark (%) <input #mark type="number" min="0" max="100" value="{{curGrade.userGrade}}" (change)="editMark(curGrade, mark.value); mark.value = ''+curGrade.userGrade; mark.blur()"></td>
+                            <td>Mark (%) <input #mark type="number" min="0" max="100" value="{{curGrade.userGrade}}"
+                                (change)="editMark(curGrade, mark.value); mark.value = ''+curGrade.userGrade; mark.blur()"
+                                (keydown.enter)="mark.blur()"></td>
                         </tr>
                         
                     </table>
@@ -73,7 +77,10 @@
 
             <!-- Results section? -->
             <div id="results_container">
-                <h2>Current grade: xx</h2>
+                <h2 *ngIf="totalWeights() > 0; else requestMarks">Current grade average: {{this.calculateAverage().toFixed(2)}}</h2>
+                <ng-template #requestMarks><h2>Add some marks!</h2></ng-template>
+                <span class="error_msg" *ngIf="totalWeights() > 100">Warning: Total weights is over 100%.</span>
+                <span class="error_msg" *ngIf="totalWeights() < 99.5 && totalWeights() > 0">Warning: Total weights is below 100%.</span>
             </div>
 
             
