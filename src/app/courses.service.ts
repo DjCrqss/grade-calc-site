@@ -40,7 +40,7 @@ export class CoursesService{
                     }
                 }
             }
-            console.log("Went back");
+            this.saveToStorage("Went back");
         }); 
     }
     // Adds a new year object
@@ -219,7 +219,7 @@ export class CourseGroup{
     }
     // Add grade item
     addGrade(){
-        this.grades.push(new GradeItem("New grade", 0, 0, 0, false));
+        this.grades.push(new GradeItem("", 0, 0, 0, false));
     }
     // Delete specific grade
     deleteGrade(id:GradeItem){

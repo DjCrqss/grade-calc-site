@@ -1,9 +1,9 @@
 <!-- Home screen button -->
-<form class="title_container">
+<form class="title_container" onsubmit="return false">
     <!-- course name and input -->
     <input #x value="{{courseObj.id}}" [disabled]="!courseObj.needsName"
     (blur)="editCourse(x.value); x.value = courseObj.id;"
-    (keydown.enter)="x.blur()" placeholder="New course"
+    (keydown.enter)="x.blur()" placeholder="New course" class="course_btn"
     >
         <!-- replace edit btn with a container that allows clicking to be linked -->
     <i class="material-icons fixed_edit_btn" *ngIf="courseObj.needsName">edit</i>
@@ -14,14 +14,20 @@
  <main id="course_page_bg" *ngIf="courseObj.isOpen" (click)="$event.stopPropagation();">
     <section id="course_page_container">
         <!-- Title section -->
-        <h1 contenteditable="true" #x (keydown.enter)="editCourse(x.innerText); x.blur(); x.textContent = courseObj.id" (blur)="editCourse(x.innerText); x.textContent = courseObj.id;">{{courseObj.id}}</h1>
+        <form onsubmit="return false"><input id="course_title" #course value="{{courseObj.id}}"
+    (blur)="editCourse(course.value); course.value = courseObj.id;"
+    (keydown.enter)="x.blur()" placeholder="Course name"
+    ></form>
+        
+        
         <!-- Grade goal section -->
         <div id="goal_container">
-            <h2>Grade goal:&nbsp;</h2>
-            <h2 contenteditable="true" #y (keydown.enter)="editGoal(y.innerText); y.blur(); y.innerText = ''+courseObj.gradeGoal"
-            (blur)="editGoal(y.innerText); y.innerText = ''+courseObj.gradeGoal;">{{courseObj.gradeGoal}}</h2><h2>%</h2>
-            <i class="material-icons edit_btn">edit</i>
-            <i *ngIf="courseObj.gradeGoal === 0" class="material-icons large_edit_btn">edit</i>
+            <h2>Grade goal (%)&ensp;</h2>
+            <!-- Number input -->
+            <form onsubmit="return false" style="display: inline-block;"><input  id="goal_title" type="number" min="0" max="100"  #goal value="{{courseObj.gradeGoal}}"
+                (blur)="editGoal(goal.value); goal.value = ''+courseObj.gradeGoal;"
+                (keydown.enter)="x.blur()" placeholder="90">
+            </form>
         </div>
 
 
@@ -30,12 +36,14 @@
             <!-- Have for loop for group cards-->
             <div class="group_card deletable_card_{{isEditing3}}" *ngFor="let curGroup of courseObj.groups">
                 <div class="title_container">
-                    <!-- <h2 contenteditable="true" #x (keydown.enter)="editYear(x.innerText);" (keyup.enter)="x.innerText = yearObj.id; x.blur()" >{{yearObj.id}}</h2> -->
-                    <h3 contenteditable="true" #z 
-                    (keydown.enter)="editGroup(curGroup, z.innerText); z.blur(); z.textContent = curGroup.id" 
-                    (blur)="editGroup(curGroup, z.innerText); z.textContent = curGroup.id;" >{{curGroup.id}}</h3>
+                    <!-- Title -->
+                    <form onsubmit="return false" style="display: inline-block;">
+                        <input class="group_title"  #group value="{{curGroup.id}}"
+                        (blur)="editGroup(curGroup, group.value); group.value = curGroup.id;"
+                        (keydown.enter)="group.blur()" placeholder="New group">
+                    </form>
 
-                    <i class="material-icons edit_btn">edit</i>
+                    <!-- <i class="material-icons edit_btn">edit</i> -->
                 </div>
 
                 
@@ -43,16 +51,18 @@
                 <div class="grade_card deletable_card_{{isEditing3}}" *ngFor="let curGrade of curGroup.grades" [ngStyle]="{'opacity': 70 + curGrade.weight + '%'}">
                     <table  >
                         <tr>
-                            <!-- Editable title and weight values -->
-                            <td class="gradeTitle" contenteditable="true" #grade 
-                        (keydown.enter)="editGrade(curGrade, grade.innerText); grade.blur(); grade.textContent = curGrade.id" 
-                        (blur)="editGrade(curGrade, grade.innerText); grade.textContent = curGrade.id;" >{{curGrade.id}}
-
-                        <!-- <textarea name="textarea" style="width:250px;height:150px;"></textarea> TRY THIS TOMORROW -->
+                            <!-- <textarea name="textarea" style="width:250px;height:150px;"></textarea> TRY THIS TOMORROW -->
+                            <td>
+                                <form onsubmit="return false" style="display: inline-block;">
+                                    <input class="group_title"  #grade value="{{curGrade.id}}"
+                                    (blur)="editGrade(curGrade, grade.value); grade.value = curGrade.id;"
+                                    (keydown.enter)="grade.blur()" placeholder="New grade">
+                                </form>
                             </td>
-                            <td>Weight (%)<form><input class="number_input" #weight type="number" min="0" max="100" value="{{+curGrade.weight.toFixed(2)}}"
-                                (change)="editWeight(curGrade, weight.value); weight.value = ''+curGrade.weight; weight.blur()"
-                                (keydown.enter)="weight.blur()"></form></td>
+                            <!-- Weight input -->
+                            <td>Weight (%)<form><input class="number_input" #weight type="number" min="0" max="100" value="{{curGrade.weight && curGrade.weight > 0 ? +curGrade.weight.toFixed(2) : ''}}"
+                                (change)="editWeight(curGrade, weight.value); weight.value = curGrade.weight ? ''+curGrade.weight : ''; weight.blur()"
+                                (keydown.enter)="weight.blur()" placeholder="{{+(100 - this.totalWeights()).toFixed(1)}}?"></form></td>
                         </tr>
                         <tr>
                             <!-- Progress bar and editible mark values -->
@@ -61,9 +71,10 @@
                                     <div class="progress_bar" [ngStyle]="{'width': curGrade.userGrade + '%'}"></div>
                                 </div>
                             </td>
-                            <td>Mark (%)<form><input class="number_input" #mark type="number" min="0" max="100" value="{{+curGrade.userGrade.toFixed(2)}}"
-                                (change)="editMark(curGrade, mark.value); mark.value = ''+curGrade.userGrade; mark.blur()"
-                                (keydown.enter)="mark.blur()"></form></td>
+                            <!-- Mark input -->
+                            <td>Mark (%)<form><input class="number_input" #mark type="number" min="0" max="100" value="{{curGrade.userGrade ? +curGrade.userGrade.toFixed(2) : '0'}}"
+                                (change)="editMark(curGrade, mark.value); mark.value = curGrade.userGrade ? ''+curGrade.userGrade : '0'; mark.blur()"
+                                (keydown.enter)="mark.blur()" placeholder="90"></form></td>
                         </tr>
                         
                     </table>
@@ -72,14 +83,12 @@
 
 
                 <!-- Add new grade button -->
-                <!-- <h5 (click)="addNewGrade(curGroup)">&lt;Add grade&gt;</h5> -->
                 <span class="add_btn" (click)="addNewGrade(curGroup)">Add grade</span>
                 <!-- Delete coruse group button -->
                 <i *ngIf="isEditing3" class="material-icons close_btn" (click)="deleteGroup(curGroup)">close</i>
             </div>
 
             <!-- Add new group button -->
-            <!-- <h4 (click)="addNewGroup()">&lt;Add course group&gt;</h4> -->
             <span class="add_btn" (click)="addNewGroup()">Add group</span>
         </article>
 

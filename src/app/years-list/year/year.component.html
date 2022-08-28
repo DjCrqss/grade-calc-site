@@ -1,4 +1,4 @@
-<form class="title_container">
+<form class="title_container" onsubmit="return false">
     <input #x value="{{yearObj.id}}"
     (blur)="editYear(x.value); x.value = yearObj.id;"
     (keydown.enter)="x.blur()" placeholder="New year"

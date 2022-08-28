@@ -1,5 +1,5 @@
 <!-- Heading and edit button -->
-<form class="title_container">
+<form class="title_container" onsubmit="return false">
     <!-- <h3 contenteditable="true" #x (keydown.enter)="editTerm(x.innerText); x.blur(); x.textContent = termObj.id" (blur)="editTerm(x.innerText); x.textContent = termObj.id;">{{termObj.id}}</h3> -->
     <input #x value="{{termObj.id}}"
     (blur)="editTerm(x.value); x.value = termObj.id;"

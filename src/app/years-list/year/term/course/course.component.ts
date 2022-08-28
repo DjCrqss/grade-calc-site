@@ -8,39 +8,25 @@ import { CourseGroup, GradeItem, SchoolCourse } from 'src/app/courses.service';
   styleUrls: ['./course.component.css', '../../.././years-list.component.css']
 })
 
-
-
 export class CourseComponent {
   @Input() courseObj!: SchoolCourse; //| undefined
   @Input() isEditing3!: boolean;
   @Output() requestSaveCourse = new EventEmitter<string>();
 
-  items: CourseGroup[] = []; // Appears in the popup window
-
-  ngOnInit(): void {
-   this.items = this.courseObj.getGroups();
-  }
 
   editCourse(id:string){
-    console.log("TEST");
    // remove newlines
-   id = id.replace(/\r?\n|\r/g, "").trim();
-   // check length then edit year if good
-   if(id.length > 0){
-     this.courseObj.editCourse(id);
-     this.requestSaveCourse.emit("Edited course");
-   }
+    id = id.replace(/\r?\n|\r/g, "").trim();
+    this.courseObj.editCourse(id);
+    this.requestSaveCourse.emit("Edited course");
   }
 
   editGoal(value:string){
-    value = value.replace(/\r?\n|\r/g, "").trim();
-    if(!isNaN(Number(value))){
-      let goalNum:number = Number(value);
-      if(goalNum >= 0 && goalNum <= 100){
-        this.courseObj.editGoal(goalNum);
-        this.requestSaveCourse.emit("Edited goal");
-      }
-    }
+    var v = parseFloat(value);
+    if(v>100) v=100;
+    if(v<0) v=0;
+    this.courseObj.editGoal(v);
+    this.requestSaveCourse.emit("Edited goal");
   }
 
   toggleEdit(){
@@ -61,11 +47,8 @@ export class CourseComponent {
   editGroup(id:CourseGroup, value:string){
     // remove newlines
     value = value.replace(/\r?\n|\r/g, "").trim();
-    // check length then edit year if good
-    if(value.length > 0){
-      this.courseObj.editGroup(id, value);
-      this.requestSaveCourse.emit("Group edited");
-    }
+    this.courseObj.editGroup(id, value);
+    this.requestSaveCourse.emit("Group edited");
   }
   deleteGroup(id:CourseGroup){
     this.courseObj.deleteGroup(id);
@@ -81,11 +64,9 @@ export class CourseComponent {
    editGrade(id:GradeItem, value:string){
     // remove newlines
     value = value.replace(/\r?\n|\r/g, "").trim();
-    // check length then edit year if good
-    if(value.length > 0){
-      id.editGrade(value);
-      this.requestSaveCourse.emit("Grade edited");
-    }
+    id.editGrade(value);
+    this.requestSaveCourse.emit("Grade edited");
+    
   }
 
   editWeight(id:GradeItem, value:string){
@@ -103,7 +84,7 @@ export class CourseComponent {
     if(v<0) v=0;
     id.editMark(v);
     this.requestSaveCourse.emit("Mark edited");
-
+    this.calculateAverage();
   }
    
    deleteGrade(parent:CourseGroup, id:GradeItem ){
@@ -117,7 +98,11 @@ export class CourseComponent {
       var weight = 0;
       for(let group of this.courseObj.getGroups()){
         for(let grade of group.getGrades()){
-          weight += grade.getWeight();
+          if(!isNaN(grade.getWeight())){
+            
+            weight += grade.getWeight();
+          }
+          
         }
       }
       return weight;
@@ -127,7 +112,9 @@ export class CourseComponent {
     var score = 0;
     for(let group of this.courseObj.getGroups()){
       for(let grade of group.getGrades()){
-        score += grade.getMark() * (grade.getWeight()/100);
+        if(!isNaN(grade.getMark()) && !isNaN(grade.getWeight())){
+          score += grade.getMark() * (grade.getWeight()/100);
+        }
       }
     }
     return score;
